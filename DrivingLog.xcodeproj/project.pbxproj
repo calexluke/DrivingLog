@@ -1,0 +1,423 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		FAC6461927A6DDBE003F51C3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC6461827A6DDBE003F51C3 /* AppDelegate.swift */; };
+		FAC6461B27A6DDBE003F51C3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC6461A27A6DDBE003F51C3 /* SceneDelegate.swift */; };
+		FAC6461D27A6DDBE003F51C3 /* ChooseLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC6461C27A6DDBE003F51C3 /* ChooseLogView.swift */; };
+		FAC6462027A6DDBE003F51C3 /* DrivingLog.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FAC6461E27A6DDBE003F51C3 /* DrivingLog.xcdatamodeld */; };
+		FAC6462227A6DDC6003F51C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FAC6462127A6DDC6003F51C3 /* Assets.xcassets */; };
+		FAC6462527A6DDC6003F51C3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FAC6462427A6DDC6003F51C3 /* Preview Assets.xcassets */; };
+		FAC6462827A6DDC6003F51C3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAC6462627A6DDC6003F51C3 /* LaunchScreen.storyboard */; };
+		FAC6463927A6DFDD003F51C3 /* Modifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC6463827A6DFDD003F51C3 /* Modifiers.swift */; };
+		FAC6463C27A6E1AB003F51C3 /* DrivingLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC6463B27A6E1AB003F51C3 /* DrivingLog.swift */; };
+		FAC6463F27A6E1B6003F51C3 /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC6463E27A6E1B6003F51C3 /* Trip.swift */; };
+		FAC6464227A6E1C4003F51C3 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC6464127A6E1C4003F51C3 /* Constants.swift */; };
+		FAC6464627A6E303003F51C3 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC6464527A6E303003F51C3 /* ProgressView.swift */; };
+		FAC6464927A6E319003F51C3 /* TripListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC6464827A6E319003F51C3 /* TripListView.swift */; };
+		FAC6464C27A6E32B003F51C3 /* TripDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC6464B27A6E32B003F51C3 /* TripDetailView.swift */; };
+		FAC6464F27A6E33B003F51C3 /* TripInProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC6464E27A6E33B003F51C3 /* TripInProgressView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		FAC6461527A6DDBE003F51C3 /* DrivingLog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DrivingLog.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FAC6461827A6DDBE003F51C3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		FAC6461A27A6DDBE003F51C3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		FAC6461C27A6DDBE003F51C3 /* ChooseLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseLogView.swift; sourceTree = "<group>"; };
+		FAC6461F27A6DDBE003F51C3 /* DrivingLog.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DrivingLog.xcdatamodel; sourceTree = "<group>"; };
+		FAC6462127A6DDC6003F51C3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		FAC6462427A6DDC6003F51C3 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		FAC6462727A6DDC6003F51C3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		FAC6462927A6DDC6003F51C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FAC6463827A6DFDD003F51C3 /* Modifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Modifiers.swift; sourceTree = "<group>"; };
+		FAC6463B27A6E1AB003F51C3 /* DrivingLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrivingLog.swift; sourceTree = "<group>"; };
+		FAC6463E27A6E1B6003F51C3 /* Trip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trip.swift; sourceTree = "<group>"; };
+		FAC6464127A6E1C4003F51C3 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = DrivingLog/Model/Constants.swift; sourceTree = SOURCE_ROOT; };
+		FAC6464527A6E303003F51C3 /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
+		FAC6464827A6E319003F51C3 /* TripListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripListView.swift; sourceTree = "<group>"; };
+		FAC6464B27A6E32B003F51C3 /* TripDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripDetailView.swift; sourceTree = "<group>"; };
+		FAC6464E27A6E33B003F51C3 /* TripInProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripInProgressView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FAC6461227A6DDBE003F51C3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		FAC6460C27A6DDBE003F51C3 = {
+			isa = PBXGroup;
+			children = (
+				FAC6461727A6DDBE003F51C3 /* DrivingLog */,
+				FAC6461627A6DDBE003F51C3 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		FAC6461627A6DDBE003F51C3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FAC6461527A6DDBE003F51C3 /* DrivingLog.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FAC6461727A6DDBE003F51C3 /* DrivingLog */ = {
+			isa = PBXGroup;
+			children = (
+				FAC6463727A6DFBB003F51C3 /* Common Views and Modifiers */,
+				FAC6463227A6DE07003F51C3 /* Model */,
+				FAC6461827A6DDBE003F51C3 /* AppDelegate.swift */,
+				FAC6461A27A6DDBE003F51C3 /* SceneDelegate.swift */,
+				FAC6463027A6DDF0003F51C3 /* Views */,
+				FAC6462127A6DDC6003F51C3 /* Assets.xcassets */,
+				FAC6462627A6DDC6003F51C3 /* LaunchScreen.storyboard */,
+				FAC6462927A6DDC6003F51C3 /* Info.plist */,
+				FAC6461E27A6DDBE003F51C3 /* DrivingLog.xcdatamodeld */,
+				FAC6462327A6DDC6003F51C3 /* Preview Content */,
+			);
+			path = DrivingLog;
+			sourceTree = "<group>";
+		};
+		FAC6462327A6DDC6003F51C3 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				FAC6462427A6DDC6003F51C3 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		FAC6463027A6DDF0003F51C3 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				FAC6461C27A6DDBE003F51C3 /* ChooseLogView.swift */,
+				FAC6464527A6E303003F51C3 /* ProgressView.swift */,
+				FAC6464827A6E319003F51C3 /* TripListView.swift */,
+				FAC6464B27A6E32B003F51C3 /* TripDetailView.swift */,
+				FAC6464E27A6E33B003F51C3 /* TripInProgressView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		FAC6463227A6DE07003F51C3 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				FAC6463B27A6E1AB003F51C3 /* DrivingLog.swift */,
+				FAC6463E27A6E1B6003F51C3 /* Trip.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		FAC6463727A6DFBB003F51C3 /* Common Views and Modifiers */ = {
+			isa = PBXGroup;
+			children = (
+				FAC6463827A6DFDD003F51C3 /* Modifiers.swift */,
+				FAC6464127A6E1C4003F51C3 /* Constants.swift */,
+			);
+			path = "Common Views and Modifiers";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		FAC6461427A6DDBE003F51C3 /* DrivingLog */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FAC6462C27A6DDC6003F51C3 /* Build configuration list for PBXNativeTarget "DrivingLog" */;
+			buildPhases = (
+				FAC6461127A6DDBE003F51C3 /* Sources */,
+				FAC6461227A6DDBE003F51C3 /* Frameworks */,
+				FAC6461327A6DDBE003F51C3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DrivingLog;
+			productName = DrivingLog;
+			productReference = FAC6461527A6DDBE003F51C3 /* DrivingLog.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FAC6460D27A6DDBE003F51C3 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1240;
+				LastUpgradeCheck = 1240;
+				TargetAttributes = {
+					FAC6461427A6DDBE003F51C3 = {
+						CreatedOnToolsVersion = 12.4;
+					};
+				};
+			};
+			buildConfigurationList = FAC6461027A6DDBE003F51C3 /* Build configuration list for PBXProject "DrivingLog" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = FAC6460C27A6DDBE003F51C3;
+			productRefGroup = FAC6461627A6DDBE003F51C3 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				FAC6461427A6DDBE003F51C3 /* DrivingLog */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		FAC6461327A6DDBE003F51C3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FAC6462827A6DDC6003F51C3 /* LaunchScreen.storyboard in Resources */,
+				FAC6462527A6DDC6003F51C3 /* Preview Assets.xcassets in Resources */,
+				FAC6462227A6DDC6003F51C3 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FAC6461127A6DDBE003F51C3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FAC6464C27A6E32B003F51C3 /* TripDetailView.swift in Sources */,
+				FAC6464F27A6E33B003F51C3 /* TripInProgressView.swift in Sources */,
+				FAC6462027A6DDBE003F51C3 /* DrivingLog.xcdatamodeld in Sources */,
+				FAC6461927A6DDBE003F51C3 /* AppDelegate.swift in Sources */,
+				FAC6461B27A6DDBE003F51C3 /* SceneDelegate.swift in Sources */,
+				FAC6463F27A6E1B6003F51C3 /* Trip.swift in Sources */,
+				FAC6463927A6DFDD003F51C3 /* Modifiers.swift in Sources */,
+				FAC6464927A6E319003F51C3 /* TripListView.swift in Sources */,
+				FAC6461D27A6DDBE003F51C3 /* ChooseLogView.swift in Sources */,
+				FAC6463C27A6E1AB003F51C3 /* DrivingLog.swift in Sources */,
+				FAC6464227A6E1C4003F51C3 /* Constants.swift in Sources */,
+				FAC6464627A6E303003F51C3 /* ProgressView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		FAC6462627A6DDC6003F51C3 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FAC6462727A6DDC6003F51C3 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		FAC6462A27A6DDC6003F51C3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		FAC6462B27A6DDC6003F51C3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		FAC6462D27A6DDC6003F51C3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"DrivingLog/Preview Content\"";
+				DEVELOPMENT_TEAM = D5C6P253A2;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = DrivingLog/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.alexluke.DrivingLog;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		FAC6462E27A6DDC6003F51C3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"DrivingLog/Preview Content\"";
+				DEVELOPMENT_TEAM = D5C6P253A2;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = DrivingLog/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.alexluke.DrivingLog;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		FAC6461027A6DDBE003F51C3 /* Build configuration list for PBXProject "DrivingLog" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FAC6462A27A6DDC6003F51C3 /* Debug */,
+				FAC6462B27A6DDC6003F51C3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FAC6462C27A6DDC6003F51C3 /* Build configuration list for PBXNativeTarget "DrivingLog" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FAC6462D27A6DDC6003F51C3 /* Debug */,
+				FAC6462E27A6DDC6003F51C3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		FAC6461E27A6DDBE003F51C3 /* DrivingLog.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				FAC6461F27A6DDBE003F51C3 /* DrivingLog.xcdatamodel */,
+			);
+			currentVersion = FAC6461F27A6DDBE003F51C3 /* DrivingLog.xcdatamodel */;
+			path = DrivingLog.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = FAC6460D27A6DDBE003F51C3 /* Project object */;
+}
