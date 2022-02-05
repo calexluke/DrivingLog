@@ -14,6 +14,10 @@ class DrivingLog {
         // empty trip list when initialized
         trips = [Trip]()
     }
+    
+    func addNewTrip(_ trip: Trip) {
+        trips.append(trip)
+    }
 }
 
 class MockDrivingLog: DrivingLog {
