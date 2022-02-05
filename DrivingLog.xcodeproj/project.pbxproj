@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FA8DE01027AEE33000DA3490 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8DE00F27AEE33000DA3490 /* UserDefaultsManager.swift */; };
+		FA8DE01227AEF9B900DA3490 /* DrivingLogsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8DE01127AEF9B900DA3490 /* DrivingLogsManager.swift */; };
 		FAC6461927A6DDBE003F51C3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC6461827A6DDBE003F51C3 /* AppDelegate.swift */; };
 		FAC6461B27A6DDBE003F51C3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC6461A27A6DDBE003F51C3 /* SceneDelegate.swift */; };
 		FAC6461D27A6DDBE003F51C3 /* ChooseLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC6461C27A6DDBE003F51C3 /* ChooseLogView.swift */; };
@@ -25,6 +27,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FA8DE00F27AEE33000DA3490 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
+		FA8DE01127AEF9B900DA3490 /* DrivingLogsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrivingLogsManager.swift; sourceTree = "<group>"; };
 		FAC6461527A6DDBE003F51C3 /* DrivingLog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DrivingLog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAC6461827A6DDBE003F51C3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FAC6461A27A6DDBE003F51C3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -84,6 +88,8 @@
 				FAC6462927A6DDC6003F51C3 /* Info.plist */,
 				FAC6461E27A6DDBE003F51C3 /* DrivingLog.xcdatamodeld */,
 				FAC6462327A6DDC6003F51C3 /* Preview Content */,
+				FA8DE00F27AEE33000DA3490 /* UserDefaultsManager.swift */,
+				FA8DE01127AEF9B900DA3490 /* DrivingLogsManager.swift */,
 			);
 			path = DrivingLog;
 			sourceTree = "<group>";
@@ -199,6 +205,7 @@
 				FAC6464C27A6E32B003F51C3 /* TripDetailView.swift in Sources */,
 				FAC6464F27A6E33B003F51C3 /* TripInProgressView.swift in Sources */,
 				FAC6462027A6DDBE003F51C3 /* DrivingLog.xcdatamodeld in Sources */,
+				FA8DE01027AEE33000DA3490 /* UserDefaultsManager.swift in Sources */,
 				FAC6461927A6DDBE003F51C3 /* AppDelegate.swift in Sources */,
 				FAC6461B27A6DDBE003F51C3 /* SceneDelegate.swift in Sources */,
 				FAC6463F27A6E1B6003F51C3 /* Trip.swift in Sources */,
@@ -207,6 +214,7 @@
 				FAC6461D27A6DDBE003F51C3 /* ChooseLogView.swift in Sources */,
 				FAC6463C27A6E1AB003F51C3 /* DrivingLog.swift in Sources */,
 				FAC6464227A6E1C4003F51C3 /* Constants.swift in Sources */,
+				FA8DE01227AEF9B900DA3490 /* DrivingLogsManager.swift in Sources */,
 				FAC6464627A6E303003F51C3 /* ProgressView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

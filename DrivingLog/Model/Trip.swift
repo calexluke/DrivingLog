@@ -7,14 +7,23 @@
 
 import Foundation
 
-struct Trip: Identifiable {
-    let id = UUID()
+struct Trip: Identifiable, Codable {
+    let id: UUID
     var startTime: Date
     var endTime: Date
     var supervisorName: String
     
     // array of GPS data?
     // var route:
+    
+    init(startTime: Date, endTime: Date, supervisorName: String) {
+        self.startTime = startTime
+        self.endTime = endTime
+        self.supervisorName = supervisorName
+        self.id = UUID()
+    }
+    
+    
     
     var totaldDurationInSeconds: Double {
         return endTime.timeIntervalSince(startTime)
