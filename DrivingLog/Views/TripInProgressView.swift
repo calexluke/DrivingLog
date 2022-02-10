@@ -15,6 +15,7 @@ struct TripInProgressView: View {
     @State var cancelAlertIsPresented = false
     
     var drivingLog: DrivingLog
+    let logsManager = DrivingLogsManager.sharedInstance
     let startTime = Date()
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
 
@@ -75,6 +76,7 @@ struct TripInProgressView: View {
     func addNewTrip() {
         let newTrip = Trip(startTime: startTime, endTime: Date(), supervisorName: supervisorName)
         drivingLog.addNewTrip(newTrip)
+        logsManager.updateAndSaveLogsList(with: drivingLog)
     }
     
     func dismissView() {
