@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FA0A57AD27B579720069CAD1 /* PDFManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0A57AC27B579720069CAD1 /* PDFManager.swift */; };
 		FA8DE01027AEE33000DA3490 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8DE00F27AEE33000DA3490 /* UserDefaultsManager.swift */; };
 		FA8DE01227AEF9B900DA3490 /* DrivingLogsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8DE01127AEF9B900DA3490 /* DrivingLogsManager.swift */; };
 		FAC6461927A6DDBE003F51C3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC6461827A6DDBE003F51C3 /* AppDelegate.swift */; };
@@ -27,6 +28,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FA0A57AC27B579720069CAD1 /* PDFManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFManager.swift; sourceTree = "<group>"; };
 		FA8DE00F27AEE33000DA3490 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		FA8DE01127AEF9B900DA3490 /* DrivingLogsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrivingLogsManager.swift; sourceTree = "<group>"; };
 		FAC6461527A6DDBE003F51C3 /* DrivingLog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DrivingLog.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -119,6 +121,7 @@
 			children = (
 				FAC6463B27A6E1AB003F51C3 /* DrivingLog.swift */,
 				FAC6463E27A6E1B6003F51C3 /* Trip.swift */,
+				FA0A57AC27B579720069CAD1 /* PDFManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -209,6 +212,7 @@
 				FAC6461927A6DDBE003F51C3 /* AppDelegate.swift in Sources */,
 				FAC6461B27A6DDBE003F51C3 /* SceneDelegate.swift in Sources */,
 				FAC6463F27A6E1B6003F51C3 /* Trip.swift in Sources */,
+				FA0A57AD27B579720069CAD1 /* PDFManager.swift in Sources */,
 				FAC6463927A6DFDD003F51C3 /* Modifiers.swift in Sources */,
 				FAC6464927A6E319003F51C3 /* TripListView.swift in Sources */,
 				FAC6461D27A6DDBE003F51C3 /* ChooseLogView.swift in Sources */,
