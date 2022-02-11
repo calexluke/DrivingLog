@@ -20,3 +20,8 @@ struct FloatConstants {
     static let buttonWidth: CGFloat = 250
     static let buttonHeight: CGFloat = 50
 }
+
+struct IntConstants {
+    static let nightHour = 18
+    static let morningHour = 6
+}

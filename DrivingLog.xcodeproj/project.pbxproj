@@ -25,7 +25,19 @@
 		FAC6464927A6E319003F51C3 /* TripListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC6464827A6E319003F51C3 /* TripListView.swift */; };
 		FAC6464C27A6E32B003F51C3 /* TripDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC6464B27A6E32B003F51C3 /* TripDetailView.swift */; };
 		FAC6464F27A6E33B003F51C3 /* TripInProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC6464E27A6E33B003F51C3 /* TripInProgressView.swift */; };
+		FAD358F227B6BDEC00F70B7D /* DrivingLogTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD358F127B6BDEC00F70B7D /* DrivingLogTests.swift */; };
+		FAD358F927B6E4E700F70B7D /* TripTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD358F827B6E4E700F70B7D /* TripTests.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		FAD358F327B6BDEC00F70B7D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FAC6460D27A6DDBE003F51C3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FAC6461427A6DDBE003F51C3;
+			remoteInfo = DrivingLog;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		FA0A57AC27B579720069CAD1 /* PDFManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFManager.swift; sourceTree = "<group>"; };
@@ -48,10 +60,20 @@
 		FAC6464827A6E319003F51C3 /* TripListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripListView.swift; sourceTree = "<group>"; };
 		FAC6464B27A6E32B003F51C3 /* TripDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripDetailView.swift; sourceTree = "<group>"; };
 		FAC6464E27A6E33B003F51C3 /* TripInProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripInProgressView.swift; sourceTree = "<group>"; };
+		FAD358EF27B6BDEC00F70B7D /* DrivingLogTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DrivingLogTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FAD358F127B6BDEC00F70B7D /* DrivingLogTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrivingLogTests.swift; sourceTree = "<group>"; };
+		FAD358F827B6E4E700F70B7D /* TripTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		FAC6461227A6DDBE003F51C3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FAD358EC27B6BDEC00F70B7D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -65,6 +87,7 @@
 			isa = PBXGroup;
 			children = (
 				FAC6461727A6DDBE003F51C3 /* DrivingLog */,
+				FAD358F027B6BDEC00F70B7D /* DrivingLogTests */,
 				FAC6461627A6DDBE003F51C3 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -73,6 +96,7 @@
 			isa = PBXGroup;
 			children = (
 				FAC6461527A6DDBE003F51C3 /* DrivingLog.app */,
+				FAD358EF27B6BDEC00F70B7D /* DrivingLogTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -135,6 +159,15 @@
 			path = "Common Views and Modifiers";
 			sourceTree = "<group>";
 		};
+		FAD358F027B6BDEC00F70B7D /* DrivingLogTests */ = {
+			isa = PBXGroup;
+			children = (
+				FAD358F127B6BDEC00F70B7D /* DrivingLogTests.swift */,
+				FAD358F827B6E4E700F70B7D /* TripTests.swift */,
+			);
+			path = DrivingLogTests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -155,17 +188,39 @@
 			productReference = FAC6461527A6DDBE003F51C3 /* DrivingLog.app */;
 			productType = "com.apple.product-type.application";
 		};
+		FAD358EE27B6BDEC00F70B7D /* DrivingLogTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FAD358F727B6BDEC00F70B7D /* Build configuration list for PBXNativeTarget "DrivingLogTests" */;
+			buildPhases = (
+				FAD358EB27B6BDEC00F70B7D /* Sources */,
+				FAD358EC27B6BDEC00F70B7D /* Frameworks */,
+				FAD358ED27B6BDEC00F70B7D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FAD358F427B6BDEC00F70B7D /* PBXTargetDependency */,
+			);
+			name = DrivingLogTests;
+			productName = DrivingLogTests;
+			productReference = FAD358EF27B6BDEC00F70B7D /* DrivingLogTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		FAC6460D27A6DDBE003F51C3 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1240;
+				LastSwiftUpdateCheck = 1320;
 				LastUpgradeCheck = 1240;
 				TargetAttributes = {
 					FAC6461427A6DDBE003F51C3 = {
 						CreatedOnToolsVersion = 12.4;
+					};
+					FAD358EE27B6BDEC00F70B7D = {
+						CreatedOnToolsVersion = 13.2.1;
+						TestTargetID = FAC6461427A6DDBE003F51C3;
 					};
 				};
 			};
@@ -183,6 +238,7 @@
 			projectRoot = "";
 			targets = (
 				FAC6461427A6DDBE003F51C3 /* DrivingLog */,
+				FAD358EE27B6BDEC00F70B7D /* DrivingLogTests */,
 			);
 		};
 /* End PBXProject section */
@@ -195,6 +251,13 @@
 				FAC6462827A6DDC6003F51C3 /* LaunchScreen.storyboard in Resources */,
 				FAC6462527A6DDC6003F51C3 /* Preview Assets.xcassets in Resources */,
 				FAC6462227A6DDC6003F51C3 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FAD358ED27B6BDEC00F70B7D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -223,7 +286,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		FAD358EB27B6BDEC00F70B7D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FAD358F927B6E4E700F70B7D /* TripTests.swift in Sources */,
+				FAD358F227B6BDEC00F70B7D /* DrivingLogTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		FAD358F427B6BDEC00F70B7D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FAC6461427A6DDBE003F51C3 /* DrivingLog */;
+			targetProxy = FAD358F327B6BDEC00F70B7D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		FAC6462627A6DDC6003F51C3 /* LaunchScreen.storyboard */ = {
@@ -395,6 +475,46 @@
 			};
 			name = Release;
 		};
+		FAD358F527B6BDEC00F70B7D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = D5C6P253A2;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.alexluke.DrivingLogTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DrivingLog.app/DrivingLog";
+			};
+			name = Debug;
+		};
+		FAD358F627B6BDEC00F70B7D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = D5C6P253A2;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.alexluke.DrivingLogTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DrivingLog.app/DrivingLog";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -412,6 +532,15 @@
 			buildConfigurations = (
 				FAC6462D27A6DDC6003F51C3 /* Debug */,
 				FAC6462E27A6DDC6003F51C3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FAD358F727B6BDEC00F70B7D /* Build configuration list for PBXNativeTarget "DrivingLogTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FAD358F527B6BDEC00F70B7D /* Debug */,
+				FAD358F627B6BDEC00F70B7D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
