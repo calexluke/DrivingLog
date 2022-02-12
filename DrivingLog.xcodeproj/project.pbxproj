@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FA04C9EF27B8548100C24D0C /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA04C9EE27B8548100C24D0C /* Utility.swift */; };
 		FA0A57AD27B579720069CAD1 /* PDFManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0A57AC27B579720069CAD1 /* PDFManager.swift */; };
 		FA8DE01027AEE33000DA3490 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8DE00F27AEE33000DA3490 /* UserDefaultsManager.swift */; };
 		FA8DE01227AEF9B900DA3490 /* DrivingLogsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8DE01127AEF9B900DA3490 /* DrivingLogsManager.swift */; };
@@ -40,6 +41,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		FA04C9EE27B8548100C24D0C /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		FA0A57AC27B579720069CAD1 /* PDFManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFManager.swift; sourceTree = "<group>"; };
 		FA8DE00F27AEE33000DA3490 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		FA8DE01127AEF9B900DA3490 /* DrivingLogsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrivingLogsManager.swift; sourceTree = "<group>"; };
@@ -155,6 +157,7 @@
 			children = (
 				FAC6463827A6DFDD003F51C3 /* Modifiers.swift */,
 				FAC6464127A6E1C4003F51C3 /* Constants.swift */,
+				FA04C9EE27B8548100C24D0C /* Utility.swift */,
 			);
 			path = "Common Views and Modifiers";
 			sourceTree = "<group>";
@@ -280,6 +283,7 @@
 				FAC6464927A6E319003F51C3 /* TripListView.swift in Sources */,
 				FAC6461D27A6DDBE003F51C3 /* ChooseLogView.swift in Sources */,
 				FAC6463C27A6E1AB003F51C3 /* DrivingLog.swift in Sources */,
+				FA04C9EF27B8548100C24D0C /* Utility.swift in Sources */,
 				FAC6464227A6E1C4003F51C3 /* Constants.swift in Sources */,
 				FA8DE01227AEF9B900DA3490 /* DrivingLogsManager.swift in Sources */,
 				FAC6464627A6E303003F51C3 /* ProgressView.swift in Sources */,

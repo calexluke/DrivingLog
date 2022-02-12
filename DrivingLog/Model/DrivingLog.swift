@@ -7,10 +7,10 @@
 
 import Foundation
 
-class DrivingLog: Identifiable, Codable {
+class DrivingLog: ObservableObject, Identifiable, Codable {
     let id: UUID
-    let name: String
-    var trips: [Trip]
+    @Published var name: String
+    @Published var trips: [Trip]
     
     init(name: String) {
         // empty trip list when initialized
@@ -26,8 +26,61 @@ class DrivingLog: Identifiable, Codable {
         self.name = "New Log"
     }
     
+    // MARK: Add codable conformance for @Published properties
+    
+    enum CodingKeys: CodingKey {
+        case id
+        case name
+        case trips
+    }
+    
+    required init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        id = try container.decode(UUID.self, forKey: .id)
+        name = try container.decode(String.self, forKey: .name)
+        trips = try container.decode([Trip].self, forKey: .trips)
+        
+    }
+    
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(id, forKey: .id)
+        try container.encode(name, forKey: .name)
+        try container.encode(trips, forKey: .trips)
+    }
+    
+    // MARK: instance methods
+    
     func addNewTrip(_ trip: Trip) {
         trips.append(trip)
+    }
+    
+    func setName(_ newName: String) {
+        name = newName
+    }
+    
+    func getTotalDrivingTime() -> Double {
+        var time = 0.0
+        for trip in trips {
+            time += trip.totaldDurationInSeconds
+        }
+        return time
+    }
+    
+    func getNightDrivingTime() -> Double {
+        var time = 0.0
+        for trip in trips {
+            time += trip.nightTimeDuration
+        }
+        return time
+    }
+    
+    func getDayDrivingTime() -> Double {
+        var time = 0.0
+        for trip in trips {
+            time += trip.dayTimeDuration
+        }
+        return time
     }
 }
 

@@ -9,16 +9,16 @@ import SwiftUI
 
 struct ProgressView: View {
     @State var newTripSheetIsPresented = false
-    
-    var drivingLog: DrivingLog
+    @ObservedObject var drivingLog: DrivingLog
     
     var body: some View {
         
         VStack {
             Spacer()
-            Text("Progress Bar Here")
+            Text("Total driving time: \(totalDrivingTimeString())")
                 .font(.title)
-            Text("and other data?")
+            Text("Night Driving time: \(nightDrivingTimeString())")
+                .font(.title)
             Spacer()
             
             NavigationLink(
@@ -35,7 +35,7 @@ struct ProgressView: View {
             .padding()
             
             Button("Share document") {
-                shareMockDrivingData()
+                shareDrivingDataTextFile()
             }
             .modifier(ButtonModifier())
         }
@@ -45,12 +45,29 @@ struct ProgressView: View {
         .navigationTitle("Overall Progress")
     }
     
-    func shareMockDrivingData() {
+    func totalDrivingTimeString() -> String {
+        return Utility.timeString(from: drivingLog.getTotalDrivingTime())
+    }
+    
+    func nightDrivingTimeString() -> String {
+        return Utility.timeString(from: drivingLog.getNightDrivingTime())
+    }
+    
+    func shareDrivingDataTextFile() {
         let manager = PDFManager()
-        let docsDir = manager.documentDirectory()
-        let message = "Driving Data will go here"
         let filename = "DrivingData.txt"
-        manager.save(text: message, toDirectory: docsDir, withFileName: filename)
+        manager.overWriteFileInDocsDir(filename, with: "Trip Data: \n\n")
+        
+        for trip in drivingLog.trips {
+            let multiLineMessage = """
+            Start Time: \(trip.startTime)
+            End Time: \(trip.endTime)
+            Supervisor: \(trip.supervisorName)
+
+            """
+            manager.appendToFileInDocsDir(filename, with: multiLineMessage + "\n")
+        }
+        
         if let documentURL = manager.getFileURLFromDocsDir(fileName: filename) {
             actionSheet(itemToShare: documentURL)
         }

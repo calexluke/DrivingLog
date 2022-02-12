@@ -39,33 +39,37 @@ struct Trip: Identifiable, Codable {
     /*a function to calculate the ratio of time driven
      between day and night for another calculation*/
     func getDayTimeRatio(start: Date, end: Date) -> Double {
+        let startHour = getHour(date: start)
+        let endHour = getHour(date: end)
+        let startMinutes = getMinutes(date: start)
+        let endMinutes = getMinutes(date: end)
         
         var totalMins = 0
         //case needed to determine if trip went
         //from one day to the next
-        if getHour(date: end) < getHour(date:start) {
-            totalMins = convertHourToMin(hours: 24 + (getHour(date: end) - getHour(date: start)))
-        } else if getHour(date: end) > getHour(date: start){
-            totalMins = convertHourToMin(hours: getHour(date: end) - getHour(date: start))
+        if endHour < startHour {
+            totalMins = convertHourToMin(hours: 24 + (endHour - startHour))
+        } else if endHour > startHour {
+            totalMins = convertHourToMin(hours: endHour - startHour)
         }
         var ratio = 0.00
         //Day into Night Trip
-        if getHour(date: start) < IntConstants.nightHour && getHour(date: end) > IntConstants.nightHour {
-            let overMins = convertHourToMin(hours: getHour(date: end) - IntConstants.nightHour) + getMinutes(date: end)
+        if startHour < IntConstants.nightHour && endHour > IntConstants.nightHour {
+            let overMins = convertHourToMin(hours: endHour - IntConstants.nightHour) + endMinutes
             ratio = 1 - Double(overMins)/Double(totalMins)
             //Night into Day Trip
-        } else if getHour(date: start) < IntConstants.morningHour && getHour(date: end) >= IntConstants.morningHour{
-            let overMins = convertHourToMin(hours: getHour(date: end) - IntConstants.morningHour) + getMinutes(date: end)
+        } else if startHour < IntConstants.morningHour && endHour >= IntConstants.morningHour{
+            let overMins = convertHourToMin(hours: endHour - IntConstants.morningHour) + endMinutes
             ratio = Double(overMins)/Double(totalMins)
             //Only Day Trip
-        } else if getHour(date: start) >= IntConstants.morningHour &&
-                    getHour(date: end) <= IntConstants.nightHour &&
-                    getHour(date: end) > getHour(date:start) {
+        } else if startHour >= IntConstants.morningHour &&
+                    endHour <= IntConstants.nightHour &&
+                    endHour >= startHour {
             ratio = 1
             //Only Night Trip
-        } else if  getHour(date: start) >= IntConstants.nightHour &&
-                    getHour(date: end) <= IntConstants.morningHour &&
-                    getHour(date: end) < getHour(date:start) {
+        } else if  startHour >= IntConstants.nightHour &&
+                    endHour <= IntConstants.morningHour &&
+                    endHour <= startHour {
             ratio = 0
         }
         return ratio
@@ -88,7 +92,7 @@ struct Trip: Identifiable, Codable {
         //special case prevention: hours being
         //0 would break the for loop
         if hours != 0 {
-            for _ in 0...hours - 1{
+            for _ in 0...hours - 1 {
                 mins += 60
             }
         }
@@ -97,6 +101,16 @@ struct Trip: Identifiable, Codable {
     
     /*returns the hour from the date object*/
     func getHour(date: Date) -> Int {
+        // put date in local timezone
+//        let formatter = DateFormatter()
+//        formatter.dateFormat = "hh"
+//        formatter.timeZone = .autoupdatingCurrent
+//        let localDate = formatter.string(from: date)
+//
+//        if let hour = Int(localDate) {
+//            return hour
+//        }
+//
         let calendar = Calendar.current
         return calendar.component(.hour, from: date)
     }
