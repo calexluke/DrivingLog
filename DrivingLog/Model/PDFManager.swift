@@ -134,38 +134,3 @@ class PDFManager {
 
 
 }
-
-
-//THIS IS TEST STUFF, NEEDS TO BE INTEGRATED!!
-//Writing to the pdf
-import UIKit
-import PDFKit
-
-//PDF URL needs to be modified a hair, this is just some code
-let pdfURL = ...
-let document = PDFDocument(url: pdfURL!)
-let page1 = document!.page(at: 0)
-
-let field = page1?.annotations.filter({ $0.fieldName! == "Date" })
-//Start time needs to be in mm/dd/yyyy format
-field?[0].widgetStringValue = trip.startTime
-
-//Once when check box is implemented, run an if statement. This is just a skeleton for what is to come
-//We also need to do some calculations for minutes, this once again is just a start
-var night = true
-if night == true{
-  let field = page1?.annotations.filter({ $0.fieldName! == "Night" })
-  //Start time needs to be in mm/dd/yyyy format
-  //Test values
-  field?[0].widgetStringValue = "1h55m"
-}
-else{
-  let field = page1?.annotations.filter({ $0.fieldName! == "Day" })
-  //Start time needs to be in mm/dd/yyyy format
-  //Test values
-  field?[0].widgetStringValue = "45m"
-}
-
-//saveURL also needs to be modified a hair, this is just some code
-let saveURL = ...
-document!.write(to: saveURL)
