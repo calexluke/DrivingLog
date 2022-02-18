@@ -9,17 +9,27 @@ import SwiftUI
 
 struct TripListView: View {
     
-    var drivingLog: DrivingLog
+    @ObservedObject var drivingLog: DrivingLog
+    var logsManager = DrivingLogsManager.sharedInstance
     
     var body: some View {
-        List(drivingLog.trips) { trip in
-            NavigationLink(
-                destination: TripDetailView(trip: trip),
-                label: {
-                    Text("Start time: \(trip.startTime)")
-                })
+        List() {
+            ForEach(drivingLog.trips) { trip in
+                NavigationLink(
+                    destination: TripDetailView(trip: trip),
+                    label: {
+                        Text("Start time: \(trip.startTime)")
+                    })
+            }
+            .onDelete(perform: delete)
+            
         }
         .navigationTitle("List of Trips")
+    }
+    
+    func delete(at offsets: IndexSet) {
+        drivingLog.trips.remove(atOffsets: offsets)
+        logsManager.updateAndSaveLogsList(with: drivingLog)
     }
 }
 
