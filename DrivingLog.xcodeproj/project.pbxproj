@@ -26,6 +26,7 @@
 		FAC6464927A6E319003F51C3 /* TripListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC6464827A6E319003F51C3 /* TripListView.swift */; };
 		FAC6464C27A6E32B003F51C3 /* TripDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC6464B27A6E32B003F51C3 /* TripDetailView.swift */; };
 		FAC6464F27A6E33B003F51C3 /* TripInProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC6464E27A6E33B003F51C3 /* TripInProgressView.swift */; };
+		FAC6745227C18D9D00258C27 /* IndianaFormPDF.pdf in Resources */ = {isa = PBXBuildFile; fileRef = FAC6745127C18D9D00258C27 /* IndianaFormPDF.pdf */; };
 		FAD358F227B6BDEC00F70B7D /* DrivingLogTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD358F127B6BDEC00F70B7D /* DrivingLogTests.swift */; };
 		FAD358F927B6E4E700F70B7D /* TripTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD358F827B6E4E700F70B7D /* TripTests.swift */; };
 /* End PBXBuildFile section */
@@ -62,6 +63,7 @@
 		FAC6464827A6E319003F51C3 /* TripListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripListView.swift; sourceTree = "<group>"; };
 		FAC6464B27A6E32B003F51C3 /* TripDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripDetailView.swift; sourceTree = "<group>"; };
 		FAC6464E27A6E33B003F51C3 /* TripInProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripInProgressView.swift; sourceTree = "<group>"; };
+		FAC6745127C18D9D00258C27 /* IndianaFormPDF.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = IndianaFormPDF.pdf; sourceTree = "<group>"; };
 		FAD358EF27B6BDEC00F70B7D /* DrivingLogTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DrivingLogTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAD358F127B6BDEC00F70B7D /* DrivingLogTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrivingLogTests.swift; sourceTree = "<group>"; };
 		FAD358F827B6E4E700F70B7D /* TripTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripTests.swift; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 		FAC6461727A6DDBE003F51C3 /* DrivingLog */ = {
 			isa = PBXGroup;
 			children = (
+				FAC6745127C18D9D00258C27 /* IndianaFormPDF.pdf */,
 				FAC6463727A6DFBB003F51C3 /* Common Views and Modifiers */,
 				FAC6463227A6DE07003F51C3 /* Model */,
 				FAC6461827A6DDBE003F51C3 /* AppDelegate.swift */,
@@ -253,6 +256,7 @@
 			files = (
 				FAC6462827A6DDC6003F51C3 /* LaunchScreen.storyboard in Resources */,
 				FAC6462527A6DDC6003F51C3 /* Preview Assets.xcassets in Resources */,
+				FAC6745227C18D9D00258C27 /* IndianaFormPDF.pdf in Resources */,
 				FAC6462227A6DDC6003F51C3 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

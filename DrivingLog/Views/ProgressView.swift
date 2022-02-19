@@ -38,6 +38,12 @@ struct ProgressView: View {
                 shareDrivingDataTextFile()
             }
             .modifier(ButtonModifier())
+            
+            Button("Write data to PDF") {
+                shareDrivingDataPDF()
+            }
+            .modifier(ButtonModifier())
+            .padding()
         }
         .sheet(isPresented: $newTripSheetIsPresented, content: {
             TripInProgressView(drivingLog: drivingLog)
@@ -63,7 +69,7 @@ struct ProgressView: View {
             Start Time: \(trip.startTime)
             End Time: \(trip.endTime)
             Supervisor: \(trip.supervisorName)
-
+            
             """
             manager.appendToFileInDocsDir(filename, with: multiLineMessage + "\n")
         }
@@ -73,10 +79,16 @@ struct ProgressView: View {
         }
     }
     
-    func actionSheet(itemToShare: URL) {
-            let activityVC = UIActivityViewController(activityItems: [itemToShare], applicationActivities: nil)
-            UIApplication.shared.windows.first?.rootViewController?.present(activityVC, animated: true, completion: nil)
+    func shareDrivingDataPDF() {
+        if let pdfURL = PDFManager().getDocumentURL(for: drivingLog) {
+            actionSheet(itemToShare: pdfURL)
         }
+    }
+    
+    func actionSheet(itemToShare: URL) {
+        let activityVC = UIActivityViewController(activityItems: [itemToShare], applicationActivities: nil)
+        UIApplication.shared.windows.first?.rootViewController?.present(activityVC, animated: true, completion: nil)
+    }
 }
 
 struct ProgressView_Previews: PreviewProvider {
