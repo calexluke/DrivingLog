@@ -16,6 +16,7 @@ struct TripInProgressView: View {
     
     var drivingLog: DrivingLog
     let logsManager = DrivingLogsManager.sharedInstance
+    let pdfManager = PDFManager()
     let startTime = Date()
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
 
@@ -77,6 +78,10 @@ struct TripInProgressView: View {
         let newTrip = Trip(startTime: startTime, endTime: Date(), supervisorName: supervisorName)
         drivingLog.addNewTrip(newTrip)
         logsManager.updateAndSaveLogsList(with: drivingLog)
+        // write to pdf in BG thread
+        DispatchQueue.global(qos: .default).async {
+            pdfManager.writeTripDataToPDF(for: drivingLog.trips, id: drivingLog.id)
+        }
     }
     
     func dismissView() {
@@ -84,7 +89,7 @@ struct TripInProgressView: View {
     }
     
     func getTimeString() -> String {
-        return Utility.timeString(from: timeCounter)
+        return Utility.hoursMinutesSecondsString(from: timeCounter)
     }
     
     func cancelAlert() -> Alert {

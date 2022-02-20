@@ -14,6 +14,7 @@ struct StringConstants {
     static let supervisorAlertMessage = "Please enter the name of your supervisor!"
     static let cancelAlertTitle = "Are you sure?"
     static let cancelAlertMessage = "You will lose any saved data for this trip"
+    static let pdfDateFormat = "MM/dd/yyyy"
 }
 
 struct FloatConstants {
