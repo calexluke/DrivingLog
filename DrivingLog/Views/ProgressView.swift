@@ -10,6 +10,7 @@ import SwiftUI
 struct ProgressView: View {
     @State var newTripSheetIsPresented = false
     @ObservedObject var drivingLog: DrivingLog
+    let pdfManager = PDFManager()
     
     var body: some View {
         
@@ -27,23 +28,30 @@ struct ProgressView: View {
                     Text("View Saved Trips")
                         .modifier(ButtonModifier())
                 })
+                .padding()
             
             Button("Start New Trip") {
                 newTripSheetIsPresented.toggle()
             }
             .modifier(ButtonModifier())
-            .padding()
-            
-            Button("Share document") {
-                shareDrivingDataTextFile()
-            }
-            .modifier(ButtonModifier())
+            .padding(.bottom)
             
             Button("Write data to PDF") {
                 shareDrivingDataPDF()
             }
             .modifier(ButtonModifier())
-            .padding()
+            .padding(.bottom)
+            
+            Button("Share Mock data pdf") {
+                let mockLog = MockDrivingLog()
+                pdfManager.writeTripDataToPDF(for: mockLog.trips, id: mockLog.id)
+                if let pdfURL = pdfManager.getDocumentURL(for: mockLog.id) {
+                    actionSheet(itemToShare: pdfURL)
+                }
+            }
+            .modifier(ButtonModifier())
+            .padding(.bottom)
+            .ignoresSafeArea()
         }
         .sheet(isPresented: $newTripSheetIsPresented, content: {
             TripInProgressView(drivingLog: drivingLog)
@@ -52,11 +60,11 @@ struct ProgressView: View {
     }
     
     func totalDrivingTimeString() -> String {
-        return Utility.timeString(from: drivingLog.getTotalDrivingTime())
+        return Utility.hoursMinutesSecondsString(from: drivingLog.getTotalDrivingTime())
     }
     
     func nightDrivingTimeString() -> String {
-        return Utility.timeString(from: drivingLog.getNightDrivingTime())
+        return Utility.hoursMinutesSecondsString(from: drivingLog.getNightDrivingTime())
     }
     
     func shareDrivingDataTextFile() {
@@ -80,7 +88,8 @@ struct ProgressView: View {
     }
     
     func shareDrivingDataPDF() {
-        if let pdfURL = PDFManager().getDocumentURL(for: drivingLog) {
+        pdfManager.writeTripDataToPDF(for: drivingLog.trips, id: drivingLog.id)
+        if let pdfURL = pdfManager.getDocumentURL(for: drivingLog.id) {
             actionSheet(itemToShare: pdfURL)
         }
     }

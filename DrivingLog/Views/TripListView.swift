@@ -10,7 +10,8 @@ import SwiftUI
 struct TripListView: View {
     
     @ObservedObject var drivingLog: DrivingLog
-    var logsManager = DrivingLogsManager.sharedInstance
+    let logsManager = DrivingLogsManager.sharedInstance
+    let pdfManager = PDFManager()
     
     var body: some View {
         List() {
@@ -30,6 +31,9 @@ struct TripListView: View {
     func delete(at offsets: IndexSet) {
         drivingLog.trips.remove(atOffsets: offsets)
         logsManager.updateAndSaveLogsList(with: drivingLog)
+        DispatchQueue.global(qos: .default).async {
+            pdfManager.writeTripDataToPDF(for: drivingLog.trips, id: drivingLog.id)
+        }
     }
 }
 

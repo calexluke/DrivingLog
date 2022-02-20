@@ -84,6 +84,8 @@ class DrivingLog: ObservableObject, Identifiable, Codable {
     }
 }
 
+// MARK: mock log for testing purposes
+
 class MockDrivingLog: DrivingLog {
     // create log with fake data for testing
     let mockTrips = [
@@ -94,15 +96,86 @@ class MockDrivingLog: DrivingLog {
     
     override init() {
         super.init(name: "Test log")
-        trips = mockTrips
+        trips = createMockTripList()
     }
     
     override init(name: String) {
         super.init(name: "Test log")
-        trips = mockTrips
+        trips = createMockTripList()
     }
     
     required init(from decoder: Decoder) throws {
         fatalError("init(from:) has not been implemented")
+    }
+    
+    // create many trips with random start and end times to fill log PDF
+    func createMockTripList() -> [Trip] {
+        var trips = [Trip]()
+        for i in 1...31 {
+            let hour = Int.random(in: 1..<24)
+            let minutes = Int.random(in: 1..<60)
+            trips.append(getMockTrip(month: 3, day: i, hour: hour, minute: minutes))
+        }
+        
+        for i in 1...31 {
+            let hour = Int.random(in: 1..<24)
+            let minutes = Int.random(in: 1..<60)
+            trips.append(getMockTrip(month: 5, day: i, hour: hour, minute: minutes))
+        }
+        
+        for i in 1...23 {
+            let hour = Int.random(in: 1..<24)
+            let minutes = Int.random(in: 1..<60)
+            trips.append(getMockTrip(month: 6, day: i, hour: hour, minute: minutes))
+        }
+        
+        for i in 1...23 {
+            let hour = Int.random(in: 1..<24)
+            let minutes = Int.random(in: 1..<60)
+            trips.append(getMockTrip(month: 7, day: i, hour: hour, minute: minutes))
+        }
+        
+        return trips
+    }
+    
+    func getMockTrip(month: Int, day: Int, hour: Int, minute: Int) -> Trip {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy/MM/dd HH:mm"
+        
+        let endHour: Int
+        let random = Int.random(in: 1...5)
+        if random > 1 {
+            endHour = hour < 23 ? (hour+1) : hour
+        } else {
+            endHour = hour
+        }
+        
+        let hourString = hour < 10 ? "0\(hour)" : "\(hour)"
+        let endHourString = endHour < 10 ? "0\(endHour)" : "\(endHour)"
+        let minuteString = minute < 10 ? "0\(minute)" : "\(minute)"
+        let monthString = month < 10 ? "0\(month)" : "\(month)"
+        let dayString = day < 10 ? "0\(day)" : "\(day)"
+        
+        let startTime: Date
+        let endTime: Date
+        let startString = "2022/\(monthString)/\(dayString) \(hourString):00"
+        let endString = "2022/\(monthString)/\(dayString) \(endHourString):\(minuteString)"
+        
+        if let startDate = formatter.date(from: startString) {
+            startTime = startDate
+        } else {
+            print("Error creating date object from \(startString)")
+            startTime = Date()
+        }
+        
+        if let endDate = formatter.date(from: endString) {
+            endTime = endDate
+        } else {
+            print("Error creating date object from \(endString)")
+            endTime = Date()
+        }
+
+        let trip = Trip(startTime: startTime, endTime: endTime, supervisorName: self.name)
+        return trip
     }
 }
