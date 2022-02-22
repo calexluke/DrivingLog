@@ -4,7 +4,6 @@
 //
 //  Created by Alex Luke on 1/30/22.
 //
-
 import SwiftUI
 
 struct TripInProgressView: View {
@@ -13,7 +12,7 @@ struct TripInProgressView: View {
     @State var supervisorName = ""
     @State var supervistorAlertIsPresented = false
     @State var cancelAlertIsPresented = false
-    
+
     var drivingLog: DrivingLog
     let logsManager = DrivingLogsManager.sharedInstance
     let pdfManager = PDFManager()
@@ -22,15 +21,21 @@ struct TripInProgressView: View {
 
     var body: some View {
         VStack {
-        
+
+            //View of the map, should take up about a third of the screen
+            MapView()
+              .ignoresSafeArea(edges: .top)
+              .frame(height: 300)
+
+            //Regular view starts here, code should probably be modified accordingly as the map may throw things off
             Spacer()
-            
+
             Text("Current trip time: ")
             Text("\(getTimeString())")
                 .font(.largeTitle)
                 .padding()
             Spacer()
-            
+
             HStack(alignment: .center) {
                 Text("Supervisor: ")
                     .font(.title)
@@ -38,7 +43,7 @@ struct TripInProgressView: View {
                     .textFieldStyle(RoundedBorderTextFieldStyle())
             }
             .padding()
-            
+
             Button("End Trip") {
                 endTrip()
             }
@@ -46,7 +51,7 @@ struct TripInProgressView: View {
             .alert(isPresented: $supervistorAlertIsPresented) {
                 supervisorAlert()
             }
-            
+
             Button("Cancel Trip") {
                 cancelTrip()
             }
@@ -60,11 +65,11 @@ struct TripInProgressView: View {
             timeCounter = Int(now.timeIntervalSince(startTime))
         }
     }
-    
+
     func cancelTrip() {
         cancelAlertIsPresented.toggle()
     }
-    
+
     func endTrip() {
         guard supervisorName != "" else {
             supervistorAlertIsPresented.toggle()
@@ -73,7 +78,7 @@ struct TripInProgressView: View {
         addNewTrip()
         dismissView()
     }
-    
+
     func addNewTrip() {
         let newTrip = Trip(startTime: startTime, endTime: Date(), supervisorName: supervisorName)
         drivingLog.addNewTrip(newTrip)
@@ -83,15 +88,15 @@ struct TripInProgressView: View {
             pdfManager.writeTripDataToPDF(for: drivingLog.trips, id: drivingLog.id)
         }
     }
-    
+
     func dismissView() {
         self.presentationMode.wrappedValue.dismiss()
     }
-    
+
     func getTimeString() -> String {
         return Utility.hoursMinutesSecondsString(from: timeCounter)
     }
-    
+
     func cancelAlert() -> Alert {
         return Alert(
             title: Text(StringConstants.cancelAlertTitle),
@@ -102,7 +107,7 @@ struct TripInProgressView: View {
             secondaryButton: .cancel()
         )
     }
-    
+
     func supervisorAlert() -> Alert {
         return Alert(
             title: Text(""),
@@ -110,7 +115,7 @@ struct TripInProgressView: View {
             dismissButton: .default(Text("OK"))
         )
     }
-        
+
 }
 
 struct TripInProgressView_Previews: PreviewProvider {
