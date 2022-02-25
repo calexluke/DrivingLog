@@ -56,7 +56,7 @@ final class MapViewModel: NSObject, ObservableObject, CLLocationManagerDelegate{
   private func checkLocationAuthorization() {
     guard let locationManager = locationManager else { return }
 
-    swicth locationManager.authorizationStatus{
+    switch locationManager.authorizationStatus{
       case .notDetermined:
         locationManager.requestWhenInUseAuthorization()
       case .restricted:
