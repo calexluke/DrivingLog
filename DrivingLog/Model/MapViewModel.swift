@@ -11,13 +11,13 @@ import MapKit
 enum MapDetails {
     static let startingLocation = CLLocationCoordinate2D(latitude: 41.4731,
     longitude: 87.0611)
-    static let defaultSpan = MKCoordinateSpan(latitudeDelta: 0.2, longitudeDelta: 0.2)
+    // zoom level of map. lower number -> higher zoom
+    static let defaultSpan = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
 }
 
 final class MapViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
 
-    @Published var region = MKCoordinateRegion(center: MapDetails.startingLocation,
-    span: MapDetails.defaultSpan)
+    @Published var region = MKCoordinateRegion(center: MapDetails.startingLocation, span: MapDetails.defaultSpan)
 
     var locationManager: CLLocationManager?
 
@@ -25,6 +25,7 @@ final class MapViewModel: NSObject, ObservableObject, CLLocationManagerDelegate 
         if CLLocationManager.locationServicesEnabled() {
             locationManager = CLLocationManager()
             locationManager!.delegate = self
+            centerMapOnUser()
         } else {
             print("Location is off. Go to settings and enable locations services.")
         }
@@ -40,10 +41,19 @@ final class MapViewModel: NSObject, ObservableObject, CLLocationManagerDelegate 
             case .denied:
                 print("You have disabled location for this app. Please enable location services.")
             case .authorizedAlways, .authorizedWhenInUse:
-                region = MKCoordinateRegion(center: locationManager.location!.coordinate,
-                span: MapDetails.defaultSpan)
+                centerMapOnUser()
             @unknown default:
                 break
+        }
+    }
+    
+    func centerMapOnUser() {
+        guard let locationManager = locationManager else { return }
+        
+        if locationManager.authorizationStatus == .authorizedAlways ||
+            locationManager.authorizationStatus == .authorizedWhenInUse {
+            
+            region = MKCoordinateRegion(center: locationManager.location!.coordinate, span: MapDetails.defaultSpan)
         }
     }
 

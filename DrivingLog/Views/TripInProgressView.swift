@@ -59,8 +59,11 @@ struct TripInProgressView: View {
             .alert(isPresented: $cancelAlertIsPresented) {
                 cancelAlert()
             }
+            .padding(.bottom)
         }
         .onReceive(timer) { time in
+            // called when timer ticks up
+            // TODO: update map location, store location data?
             let now = Date()
             timeCounter = Int(now.timeIntervalSince(startTime))
         }

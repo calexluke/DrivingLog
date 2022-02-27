@@ -10,6 +10,7 @@
 		FA04C9EF27B8548100C24D0C /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA04C9EE27B8548100C24D0C /* Utility.swift */; };
 		FA0A57AD27B579720069CAD1 /* PDFManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0A57AC27B579720069CAD1 /* PDFManager.swift */; };
 		FA74FB3A27CB05CC00D169DE /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA74FB3927CB05CC00D169DE /* MapView.swift */; };
+		FA74FB3C27CB0CE200D169DE /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA74FB3B27CB0CE200D169DE /* MapViewModel.swift */; };
 		FA8DE01027AEE33000DA3490 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8DE00F27AEE33000DA3490 /* UserDefaultsManager.swift */; };
 		FA8DE01227AEF9B900DA3490 /* DrivingLogsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8DE01127AEF9B900DA3490 /* DrivingLogsManager.swift */; };
 		FAC6461927A6DDBE003F51C3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC6461827A6DDBE003F51C3 /* AppDelegate.swift */; };
@@ -46,6 +47,7 @@
 		FA04C9EE27B8548100C24D0C /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		FA0A57AC27B579720069CAD1 /* PDFManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFManager.swift; sourceTree = "<group>"; };
 		FA74FB3927CB05CC00D169DE /* MapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		FA74FB3B27CB0CE200D169DE /* MapViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		FA8DE00F27AEE33000DA3490 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		FA8DE01127AEF9B900DA3490 /* DrivingLogsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrivingLogsManager.swift; sourceTree = "<group>"; };
 		FAC6461527A6DDBE003F51C3 /* DrivingLog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DrivingLog.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -152,6 +154,7 @@
 			isa = PBXGroup;
 			children = (
 				FAC6463B27A6E1AB003F51C3 /* DrivingLog.swift */,
+				FA74FB3B27CB0CE200D169DE /* MapViewModel.swift */,
 				FAC6463E27A6E1B6003F51C3 /* Trip.swift */,
 				FA0A57AC27B579720069CAD1 /* PDFManager.swift */,
 			);
@@ -295,6 +298,7 @@
 				FAC6464227A6E1C4003F51C3 /* Constants.swift in Sources */,
 				FA8DE01227AEF9B900DA3490 /* DrivingLogsManager.swift in Sources */,
 				FAC6464627A6E303003F51C3 /* ProgressView.swift in Sources */,
+				FA74FB3C27CB0CE200D169DE /* MapViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
