@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		FA04C9EF27B8548100C24D0C /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA04C9EE27B8548100C24D0C /* Utility.swift */; };
 		FA0A57AD27B579720069CAD1 /* PDFManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0A57AC27B579720069CAD1 /* PDFManager.swift */; };
+		FA74FB3A27CB05CC00D169DE /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA74FB3927CB05CC00D169DE /* MapView.swift */; };
 		FA8DE01027AEE33000DA3490 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8DE00F27AEE33000DA3490 /* UserDefaultsManager.swift */; };
 		FA8DE01227AEF9B900DA3490 /* DrivingLogsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8DE01127AEF9B900DA3490 /* DrivingLogsManager.swift */; };
 		FAC6461927A6DDBE003F51C3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC6461827A6DDBE003F51C3 /* AppDelegate.swift */; };
@@ -44,6 +45,7 @@
 /* Begin PBXFileReference section */
 		FA04C9EE27B8548100C24D0C /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		FA0A57AC27B579720069CAD1 /* PDFManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFManager.swift; sourceTree = "<group>"; };
+		FA74FB3927CB05CC00D169DE /* MapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		FA8DE00F27AEE33000DA3490 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		FA8DE01127AEF9B900DA3490 /* DrivingLogsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrivingLogsManager.swift; sourceTree = "<group>"; };
 		FAC6461527A6DDBE003F51C3 /* DrivingLog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DrivingLog.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -137,6 +139,7 @@
 			isa = PBXGroup;
 			children = (
 				FAC6461C27A6DDBE003F51C3 /* ChooseLogView.swift */,
+				FA74FB3927CB05CC00D169DE /* MapView.swift */,
 				FAC6464527A6E303003F51C3 /* ProgressView.swift */,
 				FAC6464827A6E319003F51C3 /* TripListView.swift */,
 				FAC6464B27A6E32B003F51C3 /* TripDetailView.swift */,
@@ -284,6 +287,7 @@
 				FAC6463F27A6E1B6003F51C3 /* Trip.swift in Sources */,
 				FA0A57AD27B579720069CAD1 /* PDFManager.swift in Sources */,
 				FAC6463927A6DFDD003F51C3 /* Modifiers.swift in Sources */,
+				FA74FB3A27CB05CC00D169DE /* MapView.swift in Sources */,
 				FAC6464927A6E319003F51C3 /* TripListView.swift in Sources */,
 				FAC6461D27A6DDBE003F51C3 /* ChooseLogView.swift in Sources */,
 				FAC6463C27A6E1AB003F51C3 /* DrivingLog.swift in Sources */,
