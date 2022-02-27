@@ -67,26 +67,6 @@ struct ProgressView: View {
         return Utility.hoursMinutesSecondsString(from: drivingLog.getNightDrivingTime())
     }
     
-    func shareDrivingDataTextFile() {
-        let manager = PDFManager()
-        let filename = "DrivingData.txt"
-        manager.overWriteFileInDocsDir(filename, with: "Trip Data: \n\n")
-        
-        for trip in drivingLog.trips {
-            let multiLineMessage = """
-            Start Time: \(trip.startTime)
-            End Time: \(trip.endTime)
-            Supervisor: \(trip.supervisorName)
-            
-            """
-            manager.appendToFileInDocsDir(filename, with: multiLineMessage + "\n")
-        }
-        
-        if let documentURL = manager.getFileURLFromDocsDir(fileName: filename) {
-            actionSheet(itemToShare: documentURL)
-        }
-    }
-    
     func shareDrivingDataPDF() {
         pdfManager.writeTripDataToPDF(for: drivingLog.trips, id: drivingLog.id)
         if let pdfURL = pdfManager.getDocumentURL(for: drivingLog.id) {
