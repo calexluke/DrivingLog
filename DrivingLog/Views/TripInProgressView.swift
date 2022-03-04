@@ -102,7 +102,7 @@ struct TripInProgressView: View {
 
     func cancelAlert() -> Alert {
         return Alert(
-            title: Text(StringConstants.cancelAlertTitle),
+            title: Text(StringConstants.areYouSureTitle),
             message: Text(StringConstants.cancelAlertMessage),
             primaryButton: .destructive(Text("OK")) {
                 dismissView()

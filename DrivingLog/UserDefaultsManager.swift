@@ -31,7 +31,6 @@ struct UserDefaultsManager {
         // Read/Get Data
         if let data = UserDefaults.standard.data(forKey: StringConstants.listOfLogsKey) {
             do {
-                // Decode Note
                 logs = try decoder.decode([DrivingLog].self, from: data)
                 if logs != nil {
                     print("Successfully loaded logs list from user defaults")

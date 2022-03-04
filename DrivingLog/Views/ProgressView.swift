@@ -16,6 +16,8 @@ struct ProgressView: View {
         
         VStack {
             Spacer()
+            Text("Progress for \(drivingLog.name)")
+                .font(.title)
             Text("Total driving time: \(totalDrivingTimeString())")
                 .font(.title)
             Text("Night Driving time: \(nightDrivingTimeString())")
@@ -42,6 +44,7 @@ struct ProgressView: View {
             .modifier(ButtonModifier())
             .padding(.bottom)
             
+            // for debug and demo
             Button("Share Mock data pdf") {
                 let mockLog = MockDrivingLog()
                 pdfManager.writeTripDataToPDF(for: mockLog.trips, id: mockLog.id)

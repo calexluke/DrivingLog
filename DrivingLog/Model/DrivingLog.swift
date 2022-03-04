@@ -7,7 +7,8 @@
 
 import Foundation
 
-class DrivingLog: ObservableObject, Identifiable, Codable {
+class DrivingLog: ObservableObject, Identifiable, Codable, Hashable {
+    
     let id: UUID
     @Published var name: String
     @Published var trips: [Trip]
@@ -26,8 +27,9 @@ class DrivingLog: ObservableObject, Identifiable, Codable {
         self.name = "New Log"
     }
     
-    // MARK: Add codable conformance for @Published properties
+    // MARK: protocol conformance methods
     
+    // Add codable conformance for @Published properties
     enum CodingKeys: CodingKey {
         case id
         case name
@@ -47,6 +49,16 @@ class DrivingLog: ObservableObject, Identifiable, Codable {
         try container.encode(id, forKey: .id)
         try container.encode(name, forKey: .name)
         try container.encode(trips, forKey: .trips)
+    }
+    
+    // conform to Equatable protocol (required by hashable)
+    static func == (lhs: DrivingLog, rhs: DrivingLog) -> Bool {
+        return lhs.id == rhs.id
+    }
+    
+    // hashable protocol conformance
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
     }
     
     // MARK: instance methods

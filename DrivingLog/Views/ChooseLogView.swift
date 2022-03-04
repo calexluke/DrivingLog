@@ -9,61 +9,80 @@ import SwiftUI
 
 struct ChooseLogView: View {
     
-    let logsManager = DrivingLogsManager.sharedInstance
-    @State var selectedLog: DrivingLog?
-    @State var userDidSelectLog = false
+    @ObservedObject var logsManager = DrivingLogsManager.sharedInstance
+    @State var selectedLog = DrivingLog(name: "default")
+    @State var deleteProfileAlertIsPresented = false
     
     var body: some View {
-        NavigationView {
-            VStack {
-                
-                Spacer()
-                
-                Text("App Name Here")
-                    .font(.title)
-                Text("Also maybe an image")
-                
-                Spacer()
-                
-                // navigate to ProgressView with new DrivingLog object
-                // TODO: have user enter a name for the log
-                NavigationLink(
-                    destination: ProgressView(drivingLog: DrivingLog(name: "Alex")),
-                    label: {
-                        Text("Start New Log")
-                            .modifier(ButtonModifier())
-                    })
-                
-                // TODO: take user to a new screen, where user will pick from saved logs
-                NavigationLink(
-                    destination: ProgressView(drivingLog: selectedLog ?? DrivingLog()),
-                    isActive: $userDidSelectLog,
-                    label: {
-                        Button("Load Previous Log") {
-                            selectedLog = getDrivingLogFromUser()
-                            userDidSelectLog.toggle()
-                        }
-                        .modifier(ButtonModifier())
-                    })
-                    .padding()
+        VStack {
+            
+            // for debug
+            HStack {
+                Text("Selected Log: ")
+                Text(selectedLog.name)
             }
-            .navigationTitle("Home Page")
+            
+            Form {
+                Picker("Select a profile", selection: $selectedLog) {
+                    ForEach(logsManager.listOfLogs, id: \.self) { log in
+                        Text(log.name)
+                    }
+                }
+                .pickerStyle(.inline)
+            }
+            
+            Spacer()
+            
+            // navigate to ProgressView with selected log
+            NavigationLink(
+                destination: ProgressView(drivingLog: selectedLog),
+                label: {
+                    Text("Load Selected Profile")
+                        .modifier(ButtonModifier())
+                })
+                .padding(.bottom)
+            
+            Button("Delete Selected Profile") {
+                deleteProfileAlertIsPresented.toggle()
+            }
+            .modifier(ButtonModifier())
+            .padding(.bottom)
+            .alert(isPresented: $deleteProfileAlertIsPresented) {
+                deleteProfileAlert()
+            }
+            
+        }
+        .navigationTitle("Select a saved profile")
+        .onAppear {
+            if let lastLog = logsManager.listOfLogs.last {
+                selectedLog = lastLog
+            }
+            
+            // for debug only, add fake profiles to the list
+            if !logsManager.containsLog(name: "Test1") &&
+                !logsManager.containsLog(name: "Test2") {
+                logsManager.listOfLogs.append(DrivingLog(name: "Test1"))
+                logsManager.listOfLogs.append(DrivingLog(name: "Test2"))
+            }
         }
     }
     
-    func getDrivingLogFromUser() -> DrivingLog {
-        // for now, load previous log
-        // TODO: have user select log from list of profiles
-        logsManager.loadLogsFromUserDefaults()
-        let logsList = logsManager.listOfLogs
-        
-        guard let lastLog = logsList.last else {
-            print("no logs exist - creating new log")
-            return DrivingLog(name: "New Log")
+    func deleteProfileAlert() -> Alert {
+        return Alert(
+            title: Text(StringConstants.areYouSureTitle),
+            message: Text(StringConstants.deletProfileAlertMessage),
+            primaryButton: .destructive(Text("OK")) {
+                deleteSelectedProfile()
+            },
+            secondaryButton: .cancel()
+        )
+    }
+    
+    func deleteSelectedProfile() {
+        logsManager.deleteLog(id: selectedLog.id)
+        if let lastLog = logsManager.listOfLogs.last {
+            selectedLog = lastLog
         }
-        
-        print("Loaded previous log named \(lastLog.name)")
-        return lastLog
     }
 }
 

@@ -11,9 +11,13 @@ import SwiftUI
 struct StringConstants {
     static let listOfLogsKey = "drivingLogs"
     static let supervisorHint = "Enter supervisor name"
+    static let profileHint = "Enter profile name"
+    static let logNameMessage = "Please enter a profile name!"
     static let supervisorAlertMessage = "Please enter the name of your supervisor!"
-    static let cancelAlertTitle = "Are you sure?"
+    static let noSelectedLogMessage = "Please select a log from the list!"
+    static let areYouSureTitle = "Are you sure?"
     static let cancelAlertMessage = "You will lose any saved data for this trip"
+    static let deletProfileAlertMessage = "You will lose any saved data for this profile"
     static let pdfDateFormat = "MM/dd/yyyy"
 }
 
