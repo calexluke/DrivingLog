@@ -17,7 +17,7 @@ struct TripListView: View {
         List() {
             ForEach(drivingLog.trips) { trip in
                 NavigationLink(
-                    destination: TripDetailView(trip: trip),
+                    destination: TripDetailView(drivingLog: drivingLog, trip: trip),
                     label: {
                         Text("Start time: \(trip.startTime)")
                     })

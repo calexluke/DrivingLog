@@ -67,6 +67,14 @@ class DrivingLog: ObservableObject, Identifiable, Codable, Hashable {
         trips.append(trip)
     }
     
+    func editTrip(tripWithChanges: Trip) {
+        for (i, trip) in trips.enumerated() {
+            if trip.id == tripWithChanges.id {
+                trips[i] = tripWithChanges
+            }
+        }
+    }
+    
     func setName(_ newName: String) {
         name = newName
     }

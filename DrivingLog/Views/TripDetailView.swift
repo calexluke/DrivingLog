@@ -7,19 +7,26 @@
 import SwiftUI
 
 struct TripDetailView: View {
-    let trip: Trip
+    
+    @ObservedObject var drivingLog: DrivingLog
+    @State var trip: Trip
+    
     var body: some View {
         VStack {
-            Text("Start Time: \(trip.startTime)")
+            Text("Map view here")
                 .font(.title3)
                 .padding()
-            Text("End Time: \(trip.endTime)")
-                .font(.title3)
-                .padding()
+            
+            Spacer()
+            
             Text("Supervisor: \(trip.supervisorName)")
                 .font(.title3)
                 .padding()
             Text("Other data?")
+            
+            Spacer()
+            
+            EditTripView(drivingLog: drivingLog, trip: trip)
         }
         .navigationTitle("Trip detail")
     }
@@ -27,6 +34,6 @@ struct TripDetailView: View {
 
 struct TripDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        TripDetailView(trip: Trip(startTime: Date(), endTime: Date() + 60, supervisorName: "Alex"))
+        TripDetailView(drivingLog: MockDrivingLog(), trip: MockDrivingLog().trips.first!)
     }
 }
