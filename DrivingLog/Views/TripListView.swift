@@ -10,6 +10,7 @@ import SwiftUI
 struct TripListView: View {
     
     @ObservedObject var drivingLog: DrivingLog
+    @State var showAddTripSheet = false
     let logsManager = DrivingLogsManager.sharedInstance
     let pdfManager = PDFManager()
     
@@ -26,6 +27,19 @@ struct TripListView: View {
             
         }
         .navigationTitle("List of Trips")
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button {
+                    showAddTripSheet = true
+                    print("Add trip tapped!")
+                } label: {
+                    Image(systemName: "plus")
+                }
+            }
+        }
+        .sheet(isPresented: $showAddTripSheet, content: {
+            AddNewTripView(drivingLog: drivingLog)
+        })
     }
     
     func delete(at offsets: IndexSet) {

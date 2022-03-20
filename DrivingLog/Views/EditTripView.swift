@@ -11,7 +11,7 @@ import SwiftUI
 struct EditTripView: View {
     
     let logsManager = DrivingLogsManager.sharedInstance
-    var drivingLog: DrivingLog
+    @ObservedObject var drivingLog: DrivingLog
     @State var trip: Trip
     
     let dateFormatter: DateFormatter = {
@@ -33,10 +33,9 @@ struct EditTripView: View {
             }
             .padding([.leading, .trailing, .bottom])
             
-            Button("Save Changes") {
+            Button("Save") {
                 drivingLog.editTrip(tripWithChanges: trip)
                 logsManager.updateAndSaveLogsList(with: drivingLog)
-                
             }
             .modifier(ButtonModifier())
         }

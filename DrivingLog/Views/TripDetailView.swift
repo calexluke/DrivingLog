@@ -10,6 +10,7 @@ struct TripDetailView: View {
     
     @ObservedObject var drivingLog: DrivingLog
     @State var trip: Trip
+    let logsManager = DrivingLogsManager.sharedInstance
     
     var body: some View {
         VStack {
