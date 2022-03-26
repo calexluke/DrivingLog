@@ -87,12 +87,24 @@ class DrivingLog: ObservableObject, Identifiable, Codable, Hashable {
         return time
     }
     
+    func totalDrivingTimeProportion() -> Double {
+        let secondsPerHour = 60.0 * 60.0
+        let totalRequiredSeconds = secondsPerHour * 50.0
+        return getTotalDrivingTime() / totalRequiredSeconds
+    }
+    
     func getNightDrivingTime() -> Double {
         var time = 0.0
         for trip in trips {
             time += trip.nightTimeDuration
         }
         return time
+    }
+    
+    func nightDrivingTimeProportion() -> Double {
+        let secondsPerHour = 60.0 * 60.0
+        let nightRequiredSeconds = secondsPerHour * 10.0
+        return getNightDrivingTime() / nightRequiredSeconds
     }
     
     func getDayDrivingTime() -> Double {

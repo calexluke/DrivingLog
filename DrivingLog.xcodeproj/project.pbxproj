@@ -10,6 +10,7 @@
 		FA04C9EF27B8548100C24D0C /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA04C9EE27B8548100C24D0C /* Utility.swift */; };
 		FA0A57AD27B579720069CAD1 /* PDFManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0A57AC27B579720069CAD1 /* PDFManager.swift */; };
 		FA57E47F27D1B13900B94AF8 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA57E47E27D1B13900B94AF8 /* HomeView.swift */; };
+		FA73E8CA27EF9BA900D26D66 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA73E8C927EF9BA900D26D66 /* ProgressBar.swift */; };
 		FA74FB3A27CB05CC00D169DE /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA74FB3927CB05CC00D169DE /* MapView.swift */; };
 		FA74FB3C27CB0CE200D169DE /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA74FB3B27CB0CE200D169DE /* MapViewModel.swift */; };
 		FA8DE01027AEE33000DA3490 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8DE00F27AEE33000DA3490 /* UserDefaultsManager.swift */; };
@@ -50,6 +51,7 @@
 		FA04C9EE27B8548100C24D0C /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		FA0A57AC27B579720069CAD1 /* PDFManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFManager.swift; sourceTree = "<group>"; };
 		FA57E47E27D1B13900B94AF8 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		FA73E8C927EF9BA900D26D66 /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
 		FA74FB3927CB05CC00D169DE /* MapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		FA74FB3B27CB0CE200D169DE /* MapViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		FA8DE00F27AEE33000DA3490 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
@@ -155,6 +157,7 @@
 				FA57E47E27D1B13900B94AF8 /* HomeView.swift */,
 				FA90E9C827E6AC7800AD8D5F /* EditTripView.swift */,
 				FA90E9CA27E6B02300AD8D5F /* AddNewTripView.swift */,
+				FA73E8C927EF9BA900D26D66 /* ProgressBar.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -302,6 +305,7 @@
 				FA90E9CB27E6B02300AD8D5F /* AddNewTripView.swift in Sources */,
 				FA74FB3A27CB05CC00D169DE /* MapView.swift in Sources */,
 				FAC6464927A6E319003F51C3 /* TripListView.swift in Sources */,
+				FA73E8CA27EF9BA900D26D66 /* ProgressBar.swift in Sources */,
 				FAC6461D27A6DDBE003F51C3 /* ChooseLogView.swift in Sources */,
 				FAC6463C27A6E1AB003F51C3 /* DrivingLog.swift in Sources */,
 				FA90E9C927E6AC7800AD8D5F /* EditTripView.swift in Sources */,
