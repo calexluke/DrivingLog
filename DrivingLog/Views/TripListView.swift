@@ -14,19 +14,26 @@ struct TripListView: View {
     let logsManager = DrivingLogsManager.sharedInstance
     let pdfManager = PDFManager()
     
+    private let listCellDateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .short
+        formatter.timeStyle = .medium
+        return formatter
+    }()
+    
     var body: some View {
         List() {
             ForEach(drivingLog.trips) { trip in
                 NavigationLink(
                     destination: TripDetailView(drivingLog: drivingLog, trip: trip),
                     label: {
-                        Text("Start time: \(trip.startTime)")
+                        Text(trip.startTime, formatter: listCellDateFormatter)
                     })
             }
             .onDelete(perform: delete)
             
         }
-        .navigationTitle("List of Trips")
+        .navigationTitle("Saved Trips")
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button {
