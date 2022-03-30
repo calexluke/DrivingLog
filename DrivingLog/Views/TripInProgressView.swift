@@ -19,6 +19,9 @@ struct TripInProgressView: View {
     let startTime = Date()
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
 
+    var route = [Coordinate]()
+    var map = MapViewModel()
+    
     var body: some View {
         VStack {
 
@@ -64,6 +67,12 @@ struct TripInProgressView: View {
         .onReceive(timer) { time in
             // called when timer ticks up
             // TODO: update map location, store location data?
+            if timeCounter % 10 == 0{
+                if timeCounter != 0 {
+                    map.updateLocation(route: route)
+                }
+                //map.updateLocation(route: route)
+            }
             let now = Date()
             timeCounter = Int(now.timeIntervalSince(startTime))
         }
@@ -118,6 +127,7 @@ struct TripInProgressView: View {
             dismissButton: .default(Text("OK"))
         )
     }
+    
 
 }
 
