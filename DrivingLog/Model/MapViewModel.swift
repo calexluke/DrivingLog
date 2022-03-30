@@ -20,12 +20,15 @@ final class MapViewModel: NSObject, ObservableObject, CLLocationManagerDelegate 
     @Published var region = MKCoordinateRegion(center: MapDetails.startingLocation, span: MapDetails.defaultSpan)
 
     var locationManager: CLLocationManager?
+    var route = [Coordinate] ()
 
     func checkIfLocationIsEnabled() {
         if CLLocationManager.locationServicesEnabled() {
             locationManager = CLLocationManager()
             locationManager!.delegate = self
+            locationManager?.startUpdatingLocation()
             centerMapOnUser()
+            updateLocation(route: route)
         } else {
             print("Location is off. Go to settings and enable locations services.")
         }
@@ -59,5 +62,12 @@ final class MapViewModel: NSObject, ObservableObject, CLLocationManagerDelegate 
 
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
         checkLocationAuthorized()
+    }
+    
+    func updateLocation(route: [Coordinate]) {
+        var locationUpdate: CLLocation!
+        locationUpdate = locationManager?.location
+        var currentLocation = Coordinate(latitude: locationUpdate.coordinate.latitude, longitude: locationUpdate.coordinate.longitude)
+        self.route.append(currentLocation)
     }
 }
