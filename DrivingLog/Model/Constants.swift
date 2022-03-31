@@ -11,7 +11,7 @@ import SwiftUI
 struct StringConstants {
     static let listOfLogsKey = "drivingLogs"
     static let supervisorHint = "Enter supervisor name"
-    static let profileHint = "Enter profile name"
+    static let profileHint = "Name for new profile"
     static let logNameMessage = "Please enter a profile name!"
     static let supervisorAlertMessage = "Please enter the name of your supervisor!"
     static let noSelectedLogMessage = "Please select a log from the list!"
