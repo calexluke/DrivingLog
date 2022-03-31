@@ -19,22 +19,23 @@ struct HomeView: View {
                 
                 Spacer()
                 
-                Text("App Name Here")
-                    .font(.title)
-                Text("Also maybe an image")
+                Text("Indiana Student Driving Tracker")
+                    .font(.title2)
+                Image("ISDTLogo")
+                    .resizable()
+                    .scaledToFit()
+                    .padding()
                 
                 Spacer()
                 
-                HStack(alignment: .center) {
-                    Text("Profile name: ")
-                        .font(.title)
-                        .padding(.leading)
-                    
-                    TextField(StringConstants.profileHint, text: $profileName)
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
-                        .padding(.trailing)
-                }
-                .padding(.bottom)
+                // navigate to choose profile screen
+                NavigationLink(
+                    destination: ChooseLogView(),
+                    label: {
+                        Text("Open A Saved Profile")
+                            .modifier(ButtonModifier())
+                    })
+                    .padding(.bottom)
                 
                 // navigate to ProgressView with new DrivingLog object
                 NavigationLink(
@@ -51,16 +52,18 @@ struct HomeView: View {
                         noProfileNameAlert()
                     }
                 
-                // navigate to choose profile screen
-                NavigationLink(
-                    destination: ChooseLogView(),
-                    label: {
-                        Text("Open A Saved Profile")
-                            .modifier(ButtonModifier())
-                    })
-                    .padding(.bottom)
+                HStack(alignment: .center) {
+                    Text("Profile name: ")
+                        .font(.title)
+                        .padding(.leading)
+                    
+                    TextField(StringConstants.profileHint, text: $profileName)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                        .padding(.trailing)
+                }
+                .padding(.bottom)
             }
-            .navigationTitle("App Title")
+            .navigationTitle("ISDT")
             .onAppear {
                 profileName = ""
             }

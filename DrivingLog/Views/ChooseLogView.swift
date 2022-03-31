@@ -28,7 +28,7 @@ struct ChooseLogView: View {
                         Text(log.name)
                     }
                 }
-                .pickerStyle(.inline)
+                .pickerStyle(InlinePickerStyle())
             }
             
             Spacer()
