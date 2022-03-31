@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		FA04C9EF27B8548100C24D0C /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA04C9EE27B8548100C24D0C /* Utility.swift */; };
 		FA0A57AD27B579720069CAD1 /* PDFManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0A57AC27B579720069CAD1 /* PDFManager.swift */; };
+		FA44F87827F607F600AA3E04 /* LineMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA44F87727F607F600AA3E04 /* LineMapView.swift */; };
 		FA57E47F27D1B13900B94AF8 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA57E47E27D1B13900B94AF8 /* HomeView.swift */; };
 		FA74FB3A27CB05CC00D169DE /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA74FB3927CB05CC00D169DE /* MapView.swift */; };
 		FA74FB3C27CB0CE200D169DE /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA74FB3B27CB0CE200D169DE /* MapViewModel.swift */; };
@@ -49,6 +50,7 @@
 /* Begin PBXFileReference section */
 		FA04C9EE27B8548100C24D0C /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		FA0A57AC27B579720069CAD1 /* PDFManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFManager.swift; sourceTree = "<group>"; };
+		FA44F87727F607F600AA3E04 /* LineMapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineMapView.swift; sourceTree = "<group>"; };
 		FA57E47E27D1B13900B94AF8 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		FA74FB3927CB05CC00D169DE /* MapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		FA74FB3B27CB0CE200D169DE /* MapViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
@@ -146,6 +148,7 @@
 		FAC6463027A6DDF0003F51C3 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				FA44F87727F607F600AA3E04 /* LineMapView.swift */,
 				FAC6461C27A6DDBE003F51C3 /* ChooseLogView.swift */,
 				FA74FB3927CB05CC00D169DE /* MapView.swift */,
 				FAC6464527A6E303003F51C3 /* ProgressView.swift */,
@@ -293,6 +296,7 @@
 				FAC6464C27A6E32B003F51C3 /* TripDetailView.swift in Sources */,
 				FAC6464F27A6E33B003F51C3 /* TripInProgressView.swift in Sources */,
 				FAC6462027A6DDBE003F51C3 /* DrivingLog.xcdatamodeld in Sources */,
+				FA44F87827F607F600AA3E04 /* LineMapView.swift in Sources */,
 				FA8DE01027AEE33000DA3490 /* UserDefaultsManager.swift in Sources */,
 				FAC6461927A6DDBE003F51C3 /* AppDelegate.swift in Sources */,
 				FAC6461B27A6DDBE003F51C3 /* SceneDelegate.swift in Sources */,
