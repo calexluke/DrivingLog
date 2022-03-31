@@ -18,9 +18,9 @@ enum MapDetails {
 final class MapViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
 
     @Published var region = MKCoordinateRegion(center: MapDetails.startingLocation, span: MapDetails.defaultSpan)
-
+    @Published var route = [Coordinate]()
     var locationManager: CLLocationManager?
-    var route = [Coordinate] ()
+    
 
     func checkIfLocationIsEnabled() {
         if CLLocationManager.locationServicesEnabled() {
