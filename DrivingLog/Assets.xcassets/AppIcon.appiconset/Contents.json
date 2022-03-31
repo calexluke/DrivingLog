@@ -6,6 +6,7 @@
       "size" : "20x20"
     },
     {
+      "filename" : "AppIcon-1.png",
       "idiom" : "iphone",
       "scale" : "3x",
       "size" : "20x20"
@@ -36,6 +37,7 @@
       "size" : "60x60"
     },
     {
+      "filename" : "AppIcon.png",
       "idiom" : "iphone",
       "scale" : "3x",
       "size" : "60x60"
