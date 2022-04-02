@@ -12,17 +12,14 @@ struct Trip: Identifiable, Codable {
     var startTime: Date
     var endTime: Date
     var supervisorName: String
-    var route = [Coordinate] ()
-    
-    // array of GPS data?
-    // var route:
+    var route = [Coordinate]()
     
     init(startTime: Date, endTime: Date, supervisorName: String) {
         self.startTime = startTime
         self.endTime = endTime
         self.supervisorName = supervisorName
         self.id = UUID()
-        self.route = [Coordinate] ()
+        self.route = [Coordinate]()
     }
     
     

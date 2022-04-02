@@ -65,7 +65,7 @@ struct TripInProgressView: View {
         }
         .onReceive(timer) { time in
             // called when timer ticks up
-            // TODO: update map location, store location data?
+            // TODO: Decide how often to store a coordinate
 //            if timeCounter % 10 == 0 {
 //                if timeCounter != 0 {
 //                    mapViewModel.updateLocation()
@@ -75,6 +75,14 @@ struct TripInProgressView: View {
             mapViewModel.updateLocation()
             let now = Date()
             timeCounter = Int(now.timeIntervalSince(startTime))
+        }
+        .onAppear {
+            // prevent phone from going into sleep mode during trip
+            UIApplication.shared.isIdleTimerDisabled = true
+        }
+        .onDisappear {
+            // re-enable sleep mode
+            UIApplication.shared.isIdleTimerDisabled = false
         }
     }
 
@@ -92,7 +100,8 @@ struct TripInProgressView: View {
     }
 
     func addNewTrip() {
-        let newTrip = Trip(startTime: startTime, endTime: Date(), supervisorName: supervisorName)
+        var newTrip = Trip(startTime: startTime, endTime: Date(), supervisorName: supervisorName)
+        newTrip.route = mapViewModel.route
         drivingLog.addNewTrip(newTrip)
         logsManager.updateAndSaveLogsList(with: drivingLog)
         // write to pdf in BG thread

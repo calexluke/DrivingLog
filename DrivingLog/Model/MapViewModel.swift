@@ -19,7 +19,18 @@ final class MapViewModel: NSObject, ObservableObject, CLLocationManagerDelegate 
 
     @Published var region = MKCoordinateRegion(center: MapDetails.startingLocation, span: MapDetails.defaultSpan)
     @Published var route = [Coordinate]()
+    @Published var routeCL = [CLLocationCoordinate2D]()
+    
     var locationManager: CLLocationManager?
+    
+    override init() {
+        // use default values for properties
+    }
+    
+    init(region: MKCoordinateRegion, route: [Coordinate]) {
+        self.region = region
+        self.route = route
+    }
     
 
     func checkIfLocationIsEnabled() {
@@ -71,6 +82,14 @@ final class MapViewModel: NSObject, ObservableObject, CLLocationManagerDelegate 
         if let locationUpdate = locationManager.location {
             let currentLocation = Coordinate(latitude: locationUpdate.coordinate.latitude, longitude: locationUpdate.coordinate.longitude)
             self.route.append(currentLocation)
+        }
+    }
+    
+    func populateCLCoords() {
+        DispatchQueue.main.async {
+            self.routeCL = self.route.map {
+                CLLocationCoordinate2D(latitude: $0.latitude, longitude: $0.longitude)
+            }
         }
     }
 }
