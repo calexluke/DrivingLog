@@ -19,8 +19,6 @@ struct TripInProgressView: View {
     let pdfManager = PDFManager()
     let startTime = Date()
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
-
-    var route = [Coordinate]()
     
     
     var body: some View {
@@ -68,12 +66,13 @@ struct TripInProgressView: View {
         .onReceive(timer) { time in
             // called when timer ticks up
             // TODO: update map location, store location data?
-            if timeCounter % 10 == 0{
-                if timeCounter != 0 {
-                    mapViewModel.updateLocation(route: route)
-                }
-                //map.updateLocation(route: route)
-            }
+//            if timeCounter % 10 == 0 {
+//                if timeCounter != 0 {
+//                    mapViewModel.updateLocation()
+//                }
+//                //map.updateLocation(route: route)
+//            }
+            mapViewModel.updateLocation()
             let now = Date()
             timeCounter = Int(now.timeIntervalSince(startTime))
         }

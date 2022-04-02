@@ -27,8 +27,7 @@ final class MapViewModel: NSObject, ObservableObject, CLLocationManagerDelegate 
             locationManager = CLLocationManager()
             locationManager!.delegate = self
             locationManager?.startUpdatingLocation()
-            centerMapOnUser()
-            updateLocation(route: route)
+            updateLocation()
         } else {
             print("Location is off. Go to settings and enable locations services.")
         }
@@ -55,8 +54,8 @@ final class MapViewModel: NSObject, ObservableObject, CLLocationManagerDelegate 
         
         if locationManager.authorizationStatus == .authorizedAlways ||
             locationManager.authorizationStatus == .authorizedWhenInUse {
-            
-            region = MKCoordinateRegion(center: locationManager.location!.coordinate, span: MapDetails.defaultSpan)
+            let span = region.span
+            region = MKCoordinateRegion(center: locationManager.location!.coordinate, span: span)
         }
     }
 
@@ -64,10 +63,14 @@ final class MapViewModel: NSObject, ObservableObject, CLLocationManagerDelegate 
         checkLocationAuthorized()
     }
     
-    func updateLocation(route: [Coordinate]) {
-        var locationUpdate: CLLocation!
-        locationUpdate = locationManager?.location
-        var currentLocation = Coordinate(latitude: locationUpdate.coordinate.latitude, longitude: locationUpdate.coordinate.longitude)
-        self.route.append(currentLocation)
+    func updateLocation() {
+        centerMapOnUser()
+        guard let locationManager = locationManager else {
+            return
+        }
+        if let locationUpdate = locationManager.location {
+            let currentLocation = Coordinate(latitude: locationUpdate.coordinate.latitude, longitude: locationUpdate.coordinate.longitude)
+            self.route.append(currentLocation)
+        }
     }
 }
