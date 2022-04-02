@@ -18,14 +18,16 @@ enum MapDetails {
 final class MapViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
 
     @Published var region = MKCoordinateRegion(center: MapDetails.startingLocation, span: MapDetails.defaultSpan)
-
+    @Published var route = [Coordinate]()
     var locationManager: CLLocationManager?
+    
 
     func checkIfLocationIsEnabled() {
         if CLLocationManager.locationServicesEnabled() {
             locationManager = CLLocationManager()
             locationManager!.delegate = self
-            centerMapOnUser()
+            locationManager?.startUpdatingLocation()
+            updateLocation()
         } else {
             print("Location is off. Go to settings and enable locations services.")
         }
@@ -52,12 +54,23 @@ final class MapViewModel: NSObject, ObservableObject, CLLocationManagerDelegate 
         
         if locationManager.authorizationStatus == .authorizedAlways ||
             locationManager.authorizationStatus == .authorizedWhenInUse {
-            
-            region = MKCoordinateRegion(center: locationManager.location!.coordinate, span: MapDetails.defaultSpan)
+            let span = region.span
+            region = MKCoordinateRegion(center: locationManager.location!.coordinate, span: span)
         }
     }
 
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
         checkLocationAuthorized()
+    }
+    
+    func updateLocation() {
+        centerMapOnUser()
+        guard let locationManager = locationManager else {
+            return
+        }
+        if let locationUpdate = locationManager.location {
+            let currentLocation = Coordinate(latitude: locationUpdate.coordinate.latitude, longitude: locationUpdate.coordinate.longitude)
+            self.route.append(currentLocation)
+        }
     }
 }

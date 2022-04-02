@@ -12,6 +12,7 @@ struct Trip: Identifiable, Codable {
     var startTime: Date
     var endTime: Date
     var supervisorName: String
+    var route = [Coordinate] ()
     
     // array of GPS data?
     // var route:
@@ -21,6 +22,7 @@ struct Trip: Identifiable, Codable {
         self.endTime = endTime
         self.supervisorName = supervisorName
         self.id = UUID()
+        self.route = [Coordinate] ()
     }
     
     
@@ -126,5 +128,15 @@ struct Trip: Identifiable, Codable {
         let hour = getHour(date: date)
         let minutes = getMinutes(date: date)
         return String(hour) + ":" + String(minutes)
+    }
+}
+
+struct Coordinate: Codable {
+    var latitude: Double
+    var longitude: Double
+    
+    init(latitude: Double, longitude:Double) {
+        self.latitude = latitude
+        self.longitude = longitude
     }
 }

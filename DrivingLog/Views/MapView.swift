@@ -11,7 +11,7 @@ import CoreLocation
 
 struct MapView: View {
     
-    @StateObject private var viewModel = MapViewModel()
+    @StateObject var viewModel: MapViewModel
     
     var body: some View {
         Map(coordinateRegion: $viewModel.region, showsUserLocation: true)
@@ -27,6 +27,6 @@ struct MapView: View {
 
 struct MapView_Previews: PreviewProvider {
     static var previews: some View {
-        MapView()
+        MapView(viewModel: MapViewModel())
     }
 }

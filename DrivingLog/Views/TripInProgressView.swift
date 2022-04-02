@@ -12,18 +12,20 @@ struct TripInProgressView: View {
     @State var supervisorName = ""
     @State var supervistorAlertIsPresented = false
     @State var cancelAlertIsPresented = false
+    @ObservedObject var mapViewModel = MapViewModel()
 
     var drivingLog: DrivingLog
     let logsManager = DrivingLogsManager.sharedInstance
     let pdfManager = PDFManager()
     let startTime = Date()
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
-
+    
+    
     var body: some View {
         VStack {
 
             //View of the map, should take up about a third of the screen
-            MapView()
+            MapView(viewModel: mapViewModel)
               .ignoresSafeArea(edges: .top)
               .frame(height: 300)
 
@@ -64,6 +66,13 @@ struct TripInProgressView: View {
         .onReceive(timer) { time in
             // called when timer ticks up
             // TODO: update map location, store location data?
+//            if timeCounter % 10 == 0 {
+//                if timeCounter != 0 {
+//                    mapViewModel.updateLocation()
+//                }
+//                //map.updateLocation(route: route)
+//            }
+            mapViewModel.updateLocation()
             let now = Date()
             timeCounter = Int(now.timeIntervalSince(startTime))
         }
@@ -118,6 +127,7 @@ struct TripInProgressView: View {
             dismissButton: .default(Text("OK"))
         )
     }
+    
 
 }
 
