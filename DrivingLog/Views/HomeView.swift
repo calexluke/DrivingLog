@@ -16,9 +16,9 @@ struct HomeView: View {
     init() {
         Theme.navigationBarColors(background: UIColor(named: "appBackgroundColor"),
                                   titleColor: UIColor(named: "primaryTextColor"),
-                                  tintColor: UIColor(named: "accentColor"))
+                                  tintColor: UIColor(named: "appAccentColor"))
         UITableView.appearance().backgroundColor = .clear
-        UITableView.appearance().tintColor = UIColor(named: "accentColor")
+        UITableView.appearance().tintColor = UIColor(named: "appAccentColor")
     }
     
     var body: some View {

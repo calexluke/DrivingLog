@@ -14,7 +14,7 @@ class Theme {
     static var appBackgroundColor = Color("appBackgroundColor")
     static var secondaryBackgroundColor = Color("secondaryBackgroundColor")
     static var textfieldBackgroundColor = Color("textfieldBackgroundColor")
-    static var accentColor = Color("accentColor")
+    static var accentColor = Color("appAccentColor")
     static var primaryTextColor = Color("primaryTextColor")
     static var buttonTextColor = Color("buttonTextColor")
     static var dayColor1 = Color("dayColor1")
