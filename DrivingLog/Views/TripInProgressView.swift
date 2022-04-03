@@ -23,21 +23,39 @@ struct TripInProgressView: View {
     
     var body: some View {
         VStack {
+            ZStack {
+                //View of the map, should take up about a third of the screen
+                MapView(viewModel: mapViewModel)
+                  .ignoresSafeArea(edges: .top)
+                VStack {
+                    HStack {
+                        Spacer()
+                        // Button to recenter map on user
+                        Button(action: {
+                            mapViewModel.autoCenteringEnabled = true
+                            mapViewModel.centerMapOnUser()
+                        }, label:  {
+                            Image(systemName: "scope")
+                                .foregroundColor(Theme.accentColor)
+                                .font(.system(size: 30))
+                                .shadow(color: .gray, radius: 2, x: 3, y: 3)
+                                .padding()
+                        })
+                    }
+                    Spacer()
+                    
+                }
+            }
 
-            //View of the map, should take up about a third of the screen
-            MapView(viewModel: mapViewModel)
-              .ignoresSafeArea(edges: .top)
-              .frame(height: 300)
+            
 
             //Regular view starts here, code should probably be modified accordingly as the map may throw things off
             Spacer()
 
-            Text("Current trip time: ")
             Text("\(getTimeString())")
                 .foregroundColor(Theme.primaryTextColor)
                 .font(.largeTitle)
                 .padding()
-            Spacer()
 
             HStack(alignment: .center) {
                 Text("Supervisor: ")

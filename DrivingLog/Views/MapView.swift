@@ -17,6 +17,20 @@ struct MapView: View {
         Map(coordinateRegion: $viewModel.region, showsUserLocation: true)
             .ignoresSafeArea()
             .accentColor(Theme.accentColor)
+            .gesture(
+                DragGesture()
+                    .onChanged( { _ in
+                        // disable auto centering when user scrolls on map
+                        viewModel.autoCenteringEnabled = false
+                    })
+            )
+            .gesture(
+                MagnificationGesture()
+                    .onChanged( { _ in
+                        // disable auto centering when user zooms on map
+                        viewModel.autoCenteringEnabled = false
+                    })
+            )
             .onAppear {
                 viewModel.checkIfLocationIsEnabled()
             }

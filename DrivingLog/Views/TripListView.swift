@@ -33,7 +33,7 @@ struct TripListView: View {
                             .foregroundColor(Theme.accentColor)
                     }
                     NavigationLink(
-                        destination: TripDetailView(drivingLog: drivingLog, trip: trip)) {
+                        destination: TripDetailView(drivingLog: drivingLog, selectedTrip: trip)) {
                         }.buttonStyle(PlainButtonStyle()).frame(width:0).opacity(0)
                 }
             }
