@@ -18,6 +18,7 @@
 		FA8DE01227AEF9B900DA3490 /* DrivingLogsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8DE01127AEF9B900DA3490 /* DrivingLogsManager.swift */; };
 		FA90E9C927E6AC7800AD8D5F /* EditTripView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA90E9C827E6AC7800AD8D5F /* EditTripView.swift */; };
 		FA90E9CB27E6B02300AD8D5F /* AddNewTripView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA90E9CA27E6B02300AD8D5F /* AddNewTripView.swift */; };
+		FAA2EEF027FA06B800B75142 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA2EEEF27FA06B800B75142 /* Theme.swift */; };
 		FAC6461927A6DDBE003F51C3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC6461827A6DDBE003F51C3 /* AppDelegate.swift */; };
 		FAC6461B27A6DDBE003F51C3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC6461A27A6DDBE003F51C3 /* SceneDelegate.swift */; };
 		FAC6461D27A6DDBE003F51C3 /* ChooseLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC6461C27A6DDBE003F51C3 /* ChooseLogView.swift */; };
@@ -60,6 +61,7 @@
 		FA8DE01127AEF9B900DA3490 /* DrivingLogsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrivingLogsManager.swift; sourceTree = "<group>"; };
 		FA90E9C827E6AC7800AD8D5F /* EditTripView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTripView.swift; sourceTree = "<group>"; };
 		FA90E9CA27E6B02300AD8D5F /* AddNewTripView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewTripView.swift; sourceTree = "<group>"; };
+		FAA2EEEF27FA06B800B75142 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		FAC6461527A6DDBE003F51C3 /* DrivingLog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DrivingLog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAC6461827A6DDBE003F51C3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FAC6461A27A6DDBE003F51C3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -182,6 +184,7 @@
 				FAC6463827A6DFDD003F51C3 /* Modifiers.swift */,
 				FAC6464127A6E1C4003F51C3 /* Constants.swift */,
 				FA04C9EE27B8548100C24D0C /* Utility.swift */,
+				FAA2EEEF27FA06B800B75142 /* Theme.swift */,
 			);
 			path = "Common Views and Modifiers";
 			sourceTree = "<group>";
@@ -305,6 +308,7 @@
 				FAC6461B27A6DDBE003F51C3 /* SceneDelegate.swift in Sources */,
 				FAC6463F27A6E1B6003F51C3 /* Trip.swift in Sources */,
 				FA0A57AD27B579720069CAD1 /* PDFManager.swift in Sources */,
+				FAA2EEF027FA06B800B75142 /* Theme.swift in Sources */,
 				FAC6463927A6DFDD003F51C3 /* Modifiers.swift in Sources */,
 				FA90E9CB27E6B02300AD8D5F /* AddNewTripView.swift in Sources */,
 				FA74FB3A27CB05CC00D169DE /* MapView.swift in Sources */,

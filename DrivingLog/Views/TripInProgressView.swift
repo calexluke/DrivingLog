@@ -34,15 +34,17 @@ struct TripInProgressView: View {
 
             Text("Current trip time: ")
             Text("\(getTimeString())")
+                .foregroundColor(Theme.primaryTextColor)
                 .font(.largeTitle)
                 .padding()
             Spacer()
 
             HStack(alignment: .center) {
                 Text("Supervisor: ")
+                    .foregroundColor(Theme.primaryTextColor)
                     .font(.title)
                 TextField(StringConstants.supervisorHint, text: $supervisorName)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .modifier(TextFieldModifer())
             }
             .padding()
 
@@ -63,6 +65,10 @@ struct TripInProgressView: View {
             }
             .padding(.bottom)
         }
+        .background(
+            Theme.appBackgroundColor
+                .ignoresSafeArea()
+        )
         .onReceive(timer) { time in
             // called when timer ticks up
             // TODO: Decide how often to store a coordinate

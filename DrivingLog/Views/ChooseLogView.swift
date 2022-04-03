@@ -13,23 +13,30 @@ struct ChooseLogView: View {
     @State var selectedLog = DrivingLog(name: "default")
     @State var deleteProfileAlertIsPresented = false
     
+    init(selectedLog: DrivingLog) {
+        self.selectedLog = selectedLog
+        UITableView.appearance().backgroundColor = .clear
+    }
+    
+    init() {
+        UITableView.appearance().backgroundColor = .clear
+    }
+    
     var body: some View {
         VStack {
-            
-            // for debug
-            HStack {
-                Text("Selected Log: ")
-                Text(selectedLog.name)
-            }
             
             Form {
                 Picker("Select a profile", selection: $selectedLog) {
                     ForEach(logsManager.listOfLogs, id: \.self) { log in
                         Text(log.name)
+                            .foregroundColor(Theme.primaryTextColor)
                     }
                 }
+                .listRowBackground(Theme.appBackgroundColor)
                 .pickerStyle(InlinePickerStyle())
+                
             }
+            .background(Theme.secondaryBackgroundColor)
             
             Spacer()
             
@@ -40,7 +47,7 @@ struct ChooseLogView: View {
                     Text("Load Selected Profile")
                         .modifier(ButtonModifier())
                 })
-                .padding(.bottom)
+                .padding([.bottom, .top])
             
             Button("Delete Selected Profile") {
                 deleteProfileAlertIsPresented.toggle()
@@ -52,6 +59,10 @@ struct ChooseLogView: View {
             }
             
         }
+        .background(
+            Theme.appBackgroundColor
+                .ignoresSafeArea()
+        )
         .navigationTitle("Select a saved profile")
         .onAppear {
             if let lastLog = logsManager.listOfLogs.last {

@@ -24,12 +24,14 @@ struct EditTripView: View {
         VStack {
             DatePicker(selection: $trip.startTime, in: ...Date(), displayedComponents: [.date, .hourAndMinute]) {
                 Text("Start Time:")
+                    .foregroundColor(Theme.primaryTextColor)
             }
             .padding(.leading)
             .padding(.trailing)
             
             DatePicker(selection: $trip.endTime, in: ...Date(), displayedComponents: [.date, .hourAndMinute]) {
                 Text("End Time:")
+                    .foregroundColor(Theme.primaryTextColor)
             }
             .padding([.leading, .trailing, .bottom])
             
@@ -38,6 +40,7 @@ struct EditTripView: View {
                 logsManager.updateAndSaveLogsList(with: drivingLog)
             }
             .modifier(ButtonModifier())
+            .padding(.bottom)
         }
     }
 }

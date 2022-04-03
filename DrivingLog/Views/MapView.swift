@@ -16,7 +16,7 @@ struct MapView: View {
     var body: some View {
         Map(coordinateRegion: $viewModel.region, showsUserLocation: true)
             .ignoresSafeArea()
-            .accentColor(Color(.systemPink))
+            .accentColor(Theme.accentColor)
             .onAppear {
                 viewModel.checkIfLocationIsEnabled()
             }

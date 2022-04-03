@@ -51,8 +51,8 @@ class Coordinator: NSObject, MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         if let routePolyline = overlay as? MKPolyline {
             let renderer = MKPolylineRenderer(polyline: routePolyline)
-            renderer.strokeColor = UIColor.systemBlue
-            renderer.lineWidth = 10
+            renderer.strokeColor = UIColor(named: "accentColor")
+            renderer.lineWidth = 5
             return renderer
         }
         return MKOverlayRenderer()

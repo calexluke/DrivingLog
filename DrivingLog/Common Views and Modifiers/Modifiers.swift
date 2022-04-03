@@ -15,9 +15,21 @@ struct ButtonModifier: ViewModifier {
         content
             .frame(width: FloatConstants.buttonWidth, height: FloatConstants.buttonHeight, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
             .font(.title3)
-            .foregroundColor(.white)
-            .background(Color.purple)
+            .foregroundColor(Theme.buttonTextColor)
+            .background(Theme.accentColor)
             .clipShape(Capsule())
             
+    }
+}
+
+struct TextFieldModifer: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .frame(height: 30)
+            .padding(EdgeInsets(top: 0, leading: 6, bottom: 0, trailing: 6))
+            .background(Theme.textfieldBackgroundColor)
+            .cornerRadius(5)
+            .accentColor(Theme.accentColor)
+            .foregroundColor(Theme.primaryTextColor)
     }
 }

@@ -24,18 +24,24 @@ struct TripDetailView: View {
             Spacer()
             
             Text("Supervisor: \(trip.supervisorName)")
+                .foregroundColor(Theme.primaryTextColor)
                 .font(.title3)
                 .padding()
             
             EditTripView(drivingLog: drivingLog, trip: trip)
         }
+        .background(
+            Theme.appBackgroundColor
+                .ignoresSafeArea()
+        )
         .navigationTitle("Trip detail")
     }
     
     @ViewBuilder
     func tripRouteView() -> some View {
         if trip.route.isEmpty {
-            Text("No route information available for this trip")
+            Text("No route information available")
+                .foregroundColor(Theme.primaryTextColor)
                 .font(.title2)
         } else {
             LineMapView(mapViewModel: mapViewModelFromTrip())

@@ -22,27 +22,33 @@ struct AddNewTripView: View {
         VStack {
             
             Spacer()
-            Text("Add new trip")
+            
+            Text("Add New Trip")
+                .foregroundColor(Theme.primaryTextColor)
                 .font(.title)
+                .bold()
                 .padding()
             
             
             HStack(alignment: .center) {
                 Text("Supervisor: ")
+                    .foregroundColor(Theme.primaryTextColor)
                     .font(.title)
                 TextField(StringConstants.supervisorHint, text: $supervisorName)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .modifier(TextFieldModifer())
             }
             .padding()
             
             DatePicker(selection: $startTime, in: ...Date(), displayedComponents: [.date, .hourAndMinute]) {
                 Text("Start Time:")
+                    .foregroundColor(Theme.primaryTextColor)
             }
             .padding(.leading)
             .padding(.trailing)
             
             DatePicker(selection: $endTime, in: ...Date(), displayedComponents: [.date, .hourAndMinute]) {
                 Text("End Time:")
+                    .foregroundColor(Theme.primaryTextColor)
             }
             .padding([.leading, .trailing, .bottom])
             
@@ -64,7 +70,12 @@ struct AddNewTripView: View {
                 presentationMode.wrappedValue.dismiss()
             }
             .modifier(ButtonModifier())
+            .padding(.bottom)
         }
+        .background(
+            Theme.appBackgroundColor
+                .ignoresSafeArea()
+        )
     }
     
     func saveNewTrip() {

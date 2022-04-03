@@ -24,15 +24,30 @@ struct TripListView: View {
     var body: some View {
         List() {
             ForEach(drivingLog.trips) { trip in
-                NavigationLink(
-                    destination: TripDetailView(drivingLog: drivingLog, trip: trip),
-                    label: {
+                ZStack {
+                    HStack {
                         Text(trip.startTime, formatter: listCellDateFormatter)
-                    })
+                            .foregroundColor(Theme.primaryTextColor)
+                        Spacer()
+                        Image(systemName: "chevron.right")
+                            .foregroundColor(Theme.accentColor)
+                    }
+                    NavigationLink(
+                        destination: TripDetailView(drivingLog: drivingLog, trip: trip)) {
+                        }.buttonStyle(PlainButtonStyle()).frame(width:0).opacity(0)
+                }
             }
+            
             .onDelete(perform: delete)
+            .listRowBackground(Theme.appBackgroundColor)
             
         }
+        .padding([.top])
+        .background(
+            Theme.secondaryBackgroundColor
+                .ignoresSafeArea()
+        )
+        
         .navigationTitle("Saved Trips")
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
