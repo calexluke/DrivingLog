@@ -10,8 +10,8 @@ import SwiftUI
 struct HomeView: View {
     
     @State var profileName = ""
-    @State var nameAlertIsPresented = false
     @State var navigateToProgressView = false
+    @State var showNewProfileSheet = false
     
     init() {
         Theme.navigationBarColors(background: UIColor(named: "appBackgroundColor"),
@@ -57,25 +57,13 @@ struct HomeView: View {
                             .modifier(ButtonModifier())
                         })
                         .padding(.bottom)
-                        .alert(isPresented: $nameAlertIsPresented) {
-                            noProfileNameAlert()
-                        }
-                    
-                    HStack(alignment: .center) {
-                        Text("Profile name: ")
-                            .font(.title)
-                            .padding(.leading)
-                        
-                        TextField(StringConstants.profileHint, text: $profileName)
-                            .modifier(TextFieldModifer())
-                            .padding(.trailing)
-                        
-                    }
-                    .padding(.bottom)
                 }
                 
                 .navigationTitle("ISDT")
                 .foregroundColor(Theme.primaryTextColor)
+                .sheet(isPresented: $showNewProfileSheet, onDismiss: onProfileNameSaved, content: {
+                    AddProfileView(newProfileName: $profileName)
+                })
                 .onAppear {
                     profileName = ""
                 }
@@ -87,12 +75,15 @@ struct HomeView: View {
             .accentColor(Theme.accentColor)
     }
     
-    func onNewProfileTapped() {
+    func onProfileNameSaved() {
         guard profileName != "" else {
-            nameAlertIsPresented.toggle()
             return
         }
         navigateToProgressView.toggle()
+    }
+    
+    func onNewProfileTapped() {
+        showNewProfileSheet.toggle()
     }
     
     func noProfileNameAlert() -> Alert {

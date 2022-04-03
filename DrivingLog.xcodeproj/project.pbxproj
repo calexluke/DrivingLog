@@ -19,6 +19,7 @@
 		FA90E9C927E6AC7800AD8D5F /* EditTripView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA90E9C827E6AC7800AD8D5F /* EditTripView.swift */; };
 		FA90E9CB27E6B02300AD8D5F /* AddNewTripView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA90E9CA27E6B02300AD8D5F /* AddNewTripView.swift */; };
 		FAA2EEF027FA06B800B75142 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA2EEEF27FA06B800B75142 /* Theme.swift */; };
+		FAA2EEF227FA3A6F00B75142 /* AddProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA2EEF127FA3A6F00B75142 /* AddProfileView.swift */; };
 		FAC6461927A6DDBE003F51C3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC6461827A6DDBE003F51C3 /* AppDelegate.swift */; };
 		FAC6461B27A6DDBE003F51C3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC6461A27A6DDBE003F51C3 /* SceneDelegate.swift */; };
 		FAC6461D27A6DDBE003F51C3 /* ChooseLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC6461C27A6DDBE003F51C3 /* ChooseLogView.swift */; };
@@ -62,6 +63,7 @@
 		FA90E9C827E6AC7800AD8D5F /* EditTripView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTripView.swift; sourceTree = "<group>"; };
 		FA90E9CA27E6B02300AD8D5F /* AddNewTripView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewTripView.swift; sourceTree = "<group>"; };
 		FAA2EEEF27FA06B800B75142 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		FAA2EEF127FA3A6F00B75142 /* AddProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProfileView.swift; sourceTree = "<group>"; };
 		FAC6461527A6DDBE003F51C3 /* DrivingLog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DrivingLog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAC6461827A6DDBE003F51C3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FAC6461A27A6DDBE003F51C3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -163,6 +165,7 @@
 				FA90E9C827E6AC7800AD8D5F /* EditTripView.swift */,
 				FA90E9CA27E6B02300AD8D5F /* AddNewTripView.swift */,
 				FA73E8C927EF9BA900D26D66 /* ProgressBar.swift */,
+				FAA2EEF127FA3A6F00B75142 /* AddProfileView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -313,6 +316,7 @@
 				FA90E9CB27E6B02300AD8D5F /* AddNewTripView.swift in Sources */,
 				FA74FB3A27CB05CC00D169DE /* MapView.swift in Sources */,
 				FAC6464927A6E319003F51C3 /* TripListView.swift in Sources */,
+				FAA2EEF227FA3A6F00B75142 /* AddProfileView.swift in Sources */,
 				FA73E8CA27EF9BA900D26D66 /* ProgressBar.swift in Sources */,
 				FAC6461D27A6DDBE003F51C3 /* ChooseLogView.swift in Sources */,
 				FAC6463C27A6E1AB003F51C3 /* DrivingLog.swift in Sources */,

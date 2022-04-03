@@ -21,8 +21,9 @@ struct ProgressView: View {
                 Spacer()
                 Text("Progress for \(drivingLog.name)")
                     .font(.title)
+                    .bold()
                     .foregroundColor(Theme.primaryTextColor)
-                Spacer()
+                    .padding(.bottom)
                 
                 ProgressInfoSection()
                 
@@ -41,12 +42,6 @@ struct ProgressView: View {
                 }
                 .modifier(ButtonModifier())
                 .padding(.bottom)
-                
-                Button("Write data to PDF") {
-                    shareDrivingDataPDF()
-                }
-                .modifier(ButtonModifier())
-                .padding(.bottom)
 
     //            // for debug and demo
     //            Button("Share Mock data pdf") {
@@ -59,6 +54,16 @@ struct ProgressView: View {
     //            .modifier(ButtonModifier())
     //            .padding(.bottom)
     //            .ignoresSafeArea()
+            }
+        }
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button {
+                    shareDrivingDataPDF()
+                    print("Share data as pdf!")
+                } label: {
+                    Image(systemName: "square.and.arrow.up")
+                }
             }
         }
         .sheet(isPresented: $newTripSheetIsPresented, content: {
@@ -116,11 +121,11 @@ extension ProgressView {
 
 extension ProgressView {
     func totalDrivingTimeString() -> String {
-        return Utility.hoursMinutesSecondsString(from: drivingLog.getTotalDrivingTime())
+        return Utility.hoursMinutesString(from: drivingLog.getTotalDrivingTime())
     }
     
     func nightDrivingTimeString() -> String {
-        return Utility.hoursMinutesSecondsString(from: drivingLog.getNightDrivingTime())
+        return Utility.hoursMinutesString(from: drivingLog.getNightDrivingTime())
     }
     
     func shareDrivingDataPDF() {

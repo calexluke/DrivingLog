@@ -20,7 +20,7 @@ struct Utility {
     }
     
     static func hoursMinutesSecondsString(from seconds: Int) -> String {
-        let hours = (seconds % 86400) / 3600
+        let hours = seconds / 3600
         let minutes = (seconds % 3600) / 60
         let seconds = (seconds % 3600) % 60
         
@@ -32,7 +32,7 @@ struct Utility {
     }
     
     static func hoursMinutesString(from seconds: Int) -> String {
-        let hours = (seconds % 86400) / 3600
+        let hours = seconds / 3600
         let minutes = (seconds % 3600) / 60
         
         let hourString = hours > 9 ? "\(hours)" : "0\(hours)"

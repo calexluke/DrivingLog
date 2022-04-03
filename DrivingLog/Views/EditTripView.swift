@@ -35,7 +35,7 @@ struct EditTripView: View {
             }
             .padding([.leading, .trailing, .bottom])
             
-            Button("Save") {
+            Button("Save Changes") {
                 drivingLog.editTrip(tripWithChanges: trip)
                 logsManager.updateAndSaveLogsList(with: drivingLog)
             }
