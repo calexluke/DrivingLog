@@ -22,7 +22,10 @@ struct HomeView: View {
     }
     
     var body: some View {
-            NavigationView {
+        NavigationView {
+            ZStack {
+                Theme.appBackgroundColor
+                    .ignoresSafeArea()
                 VStack {
                     
                     Spacer()
@@ -73,6 +76,8 @@ struct HomeView: View {
                 )
             }
             .accentColor(Theme.accentColor)
+        }
+        
     }
     
     func onProfileNameSaved() {
