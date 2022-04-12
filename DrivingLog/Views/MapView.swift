@@ -20,6 +20,8 @@ struct MapView: View {
         Map(coordinateRegion: $viewModel.region, showsUserLocation: true)
             .ignoresSafeArea()
             .accentColor(Theme.accentColor)
+        
+            //What happens when the user drags to see different areas around the map?
             .gesture(
                 DragGesture()
                     .onChanged( { _ in
@@ -27,6 +29,8 @@ struct MapView: View {
                         viewModel.autoCenteringEnabled = false
                     })
             )
+        
+             //What happens when the user zooms in or out on the map with their fingers?
             .gesture(
                 MagnificationGesture()
                     .onChanged( { _ in
@@ -44,7 +48,7 @@ struct MapView: View {
     
 }
 
-
+//This works to produce a view preview of a map in the Xcode IDE
 struct MapView_Previews: PreviewProvider {
     static var previews: some View {
         MapView(viewModel: MapViewModel())
