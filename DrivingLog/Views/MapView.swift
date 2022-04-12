@@ -13,7 +13,10 @@ struct MapView: View {
     
     @StateObject var viewModel: MapViewModel
     
+    //Creating the MapView struct to be displayed on the Trip In Progress View.
     var body: some View {
+        
+        //Dealing with the looks of the view
         Map(coordinateRegion: $viewModel.region, showsUserLocation: true)
             .ignoresSafeArea()
             .accentColor(Theme.accentColor)
@@ -31,7 +34,10 @@ struct MapView: View {
                         viewModel.autoCenteringEnabled = false
                     })
             )
+            //What will the program do when this view appears?
             .onAppear {
+                
+                //It will check if the user location is enabled
                 viewModel.checkIfLocationIsEnabled()
             }
     }
