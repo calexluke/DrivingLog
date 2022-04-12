@@ -14,6 +14,7 @@ struct EditTripView: View {
     @ObservedObject var drivingLog: DrivingLog
     @State var trip: Trip
     
+    //This formats the date and time
     let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateStyle = .long
@@ -22,19 +23,21 @@ struct EditTripView: View {
     
     var body: some View {
         VStack {
+            //Date picker with previous data in it which can be edited
             DatePicker(selection: $trip.startTime, in: ...Date(), displayedComponents: [.date, .hourAndMinute]) {
                 Text("Start Time:")
                     .foregroundColor(Theme.primaryTextColor)
             }
             .padding(.leading)
             .padding(.trailing)
-            
+            //Date picker with previous data in it which can be edited
             DatePicker(selection: $trip.endTime, in: ...Date(), displayedComponents: [.date, .hourAndMinute]) {
                 Text("End Time:")
                     .foregroundColor(Theme.primaryTextColor)
             }
             .padding([.leading, .trailing, .bottom])
             
+            //Button to save changes
             Button("Save Changes") {
                 drivingLog.editTrip(tripWithChanges: trip)
                 logsManager.updateAndSaveLogsList(with: drivingLog)
