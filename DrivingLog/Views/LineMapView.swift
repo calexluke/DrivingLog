@@ -10,15 +10,12 @@ import MapKit
 
 struct LineMapView: UIViewRepresentable {
     
+    //Creating an instance of the MapViewModel
     @ObservedObject var mapViewModel: MapViewModel
-
-//    var lineCoordinates: [CLLocationCoordinate2D] {
-//        let coords = mapViewModel.route.map {
-//            CLLocationCoordinate2D(latitude: $0.latitude, longitude: $0.longitude)
-//        }
-//        return coords
-//    }
     
+    /// This function initializes an MKMapView to be put on the Trip Detail View
+    /// - Parameter context: The view's initial state
+    /// - Returns: The MKMapView to be displayed
     func makeUIView(context: Context) -> MKMapView {
         let mapView = MKMapView()
         mapView.delegate = context.coordinator
