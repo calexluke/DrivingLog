@@ -8,6 +8,8 @@
 import SwiftUI
 import MapKit
 
+/*Sets default values for the map like the starting location
+and the default zoom on the map*/
 enum MapDetails {
     static let startingLocation = CLLocationCoordinate2D(latitude: 41.4731,
     longitude: 87.0611)
@@ -33,7 +35,9 @@ final class MapViewModel: NSObject, ObservableObject, CLLocationManagerDelegate 
         self.route = route
     }
     
-
+    /*A function that checks if the location is enabled. If it is enabled,
+    the location manager is created and begins updating the users location.
+    If it is not enabled, a message is presented to the user.*/
     func checkIfLocationIsEnabled() {
         if CLLocationManager.locationServicesEnabled() {
             locationManager = CLLocationManager()
@@ -45,6 +49,9 @@ final class MapViewModel: NSObject, ObservableObject, CLLocationManagerDelegate 
         }
     }
 
+    /*A function that checks if the the location is enabled. There are
+    cases for if the location is enabled, denied, restricted, or not
+    determined.*/
     func checkLocationAuthorized() {
         guard let locationManager = locationManager else { return }
         switch locationManager.authorizationStatus {
@@ -61,6 +68,8 @@ final class MapViewModel: NSObject, ObservableObject, CLLocationManagerDelegate 
         }
     }
     
+    /*This function centers the map based on the user's current
+    location on the map.*/
     func centerMapOnUser() {
         if autoCenteringEnabled {
             guard let locationManager = locationManager,
@@ -80,6 +89,8 @@ final class MapViewModel: NSObject, ObservableObject, CLLocationManagerDelegate 
         checkLocationAuthorized()
     }
     
+    /*A function that updates the location of the user and adds
+    it to the array of coordinates.*/
     func updateLocation() {
         centerMapOnUser()
         guard let locationManager = locationManager else {
