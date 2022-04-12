@@ -13,9 +13,9 @@ struct LineMapView: UIViewRepresentable {
     //Creating an instance of the MapViewModel
     @ObservedObject var mapViewModel: MapViewModel
     
-    /// This function initializes an MKMapView to be put on the Trip Detail View
-    /// - Parameter context: The view's initial state
-    /// - Returns: The MKMapView to be displayed
+    /// This function initializes an MKMapView to be put on the Trip Detail View.
+    /// - Parameter context: The view's initial state.
+    /// - Returns: The MKMapView to be displayed.
     func makeUIView(context: Context) -> MKMapView {
         let mapView = MKMapView()
         mapView.delegate = context.coordinator
