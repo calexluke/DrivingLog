@@ -58,6 +58,7 @@ struct TripInProgressView: View {
                 .padding()
 
             HStack(alignment: .center) {
+                //Creates the field and label for the supervisor
                 Text("Supervisor: ")
                     .foregroundColor(Theme.primaryTextColor)
                     .font(.title)
@@ -70,6 +71,7 @@ struct TripInProgressView: View {
                 endTrip()
             }
             .modifier(ButtonModifier())
+            //presents an alert to the supervisor that the trip was completed
             .alert(isPresented: $supervistorAlertIsPresented) {
                 supervisorAlert()
             }
@@ -78,6 +80,7 @@ struct TripInProgressView: View {
                 cancelTrip()
             }
             .modifier(ButtonModifier())
+            //pops up an alert asking if the user really wants to quit the trip
             .alert(isPresented: $cancelAlertIsPresented) {
                 cancelAlert()
             }
@@ -96,6 +99,7 @@ struct TripInProgressView: View {
 //                }
 //                //map.updateLocation(route: route)
 //            }
+            //updates the coordinates throughout the trip
             mapViewModel.updateLocation()
             let now = Date()
             timeCounter = Int(now.timeIntervalSince(startTime))
@@ -110,11 +114,16 @@ struct TripInProgressView: View {
         }
     }
 
+    /*This function pops up the alert to confirm if the user
+    wants to cancel the trip or not.*/
     func cancelTrip() {
         cancelAlertIsPresented.toggle()
     }
 
+    /*This function adds the trip to the driving log and 
+    goes to the next view.*/
     func endTrip() {
+        //Checks if a supervisor was entered
         guard supervisorName != "" else {
             supervistorAlertIsPresented.toggle()
             return
@@ -123,6 +132,8 @@ struct TripInProgressView: View {
         dismissView()
     }
 
+    /*This function adds the trip and its elements like the map view and times
+    to the log and updates the PDF with that log.*/
     func addNewTrip() {
         var newTrip = Trip(startTime: startTime, endTime: Date(), supervisorName: supervisorName)
         newTrip.route = mapViewModel.route
@@ -134,14 +145,17 @@ struct TripInProgressView: View {
         }
     }
 
+    /*This function takes the user to a different screen*/
     func dismissView() {
         self.presentationMode.wrappedValue.dismiss()
     }
-
+    
+    /*This function gets the time which is returned as a string.*/
     func getTimeString() -> String {
         return Utility.hoursMinutesSecondsString(from: timeCounter)
     }
 
+    /*This function generates the popup for cancelling a trip.*/
     func cancelAlert() -> Alert {
         return Alert(
             title: Text(StringConstants.areYouSureTitle),
@@ -153,6 +167,7 @@ struct TripInProgressView: View {
         )
     }
 
+    /*This function alerts the supervisor that a trip was completed.*/
     func supervisorAlert() -> Alert {
         return Alert(
             title: Text(""),
@@ -164,6 +179,7 @@ struct TripInProgressView: View {
 
 }
 
+/*This struct generates the trip in progress view.*/
 struct TripInProgressView_Previews: PreviewProvider {
     static var previews: some View {
         TripInProgressView(drivingLog: MockDrivingLog())
