@@ -13,6 +13,7 @@ struct ChooseLogView: View {
     @State var selectedLog = DrivingLog(name: "default")
     @State var deleteProfileAlertIsPresented = false
     
+    //sets the current log to the one that was selected
     init(selectedLog: DrivingLog) {
         self.selectedLog = selectedLog
         UITableView.appearance().backgroundColor = .clear
@@ -25,6 +26,7 @@ struct ChooseLogView: View {
     var body: some View {
         VStack {
             
+            //creates a form which all the saved profiles are listed under
             Form {
                 Picker("Select a profile", selection: $selectedLog) {
                     ForEach(logsManager.listOfLogs, id: \.self) { log in
@@ -49,11 +51,13 @@ struct ChooseLogView: View {
                 })
                 .padding([.bottom, .top])
             
+            //deletes a profile if this button is clicked
             Button("Delete Selected Profile") {
                 deleteProfileAlertIsPresented.toggle()
             }
             .modifier(ButtonModifier())
             .padding(.bottom)
+            //final alert before deleting profile
             .alert(isPresented: $deleteProfileAlertIsPresented) {
                 deleteProfileAlert()
             }
@@ -63,6 +67,7 @@ struct ChooseLogView: View {
             Theme.appBackgroundColor
                 .ignoresSafeArea()
         )
+        //text on top of screen
         .navigationTitle("Select a saved profile")
         .onAppear {
             if let lastLog = logsManager.listOfLogs.last {
@@ -78,6 +83,8 @@ struct ChooseLogView: View {
         }
     }
     
+    /*This function provides the popup before the profile is deleted
+    to confirm the user wants to delete the profile.*/
     func deleteProfileAlert() -> Alert {
         return Alert(
             title: Text(StringConstants.areYouSureTitle),
@@ -89,6 +96,8 @@ struct ChooseLogView: View {
         )
     }
     
+    /*This function removes the selected profile from the 
+    remaining saved profiles.*/
     func deleteSelectedProfile() {
         logsManager.deleteLog(id: selectedLog.id)
         if let lastLog = logsManager.listOfLogs.last {
@@ -97,6 +106,7 @@ struct ChooseLogView: View {
     }
 }
 
+/*This struct creates the view displayed to the user*/
 struct ChooseLogView_Previews: PreviewProvider {
     static var previews: some View {
         ChooseLogView(selectedLog: MockDrivingLog())
