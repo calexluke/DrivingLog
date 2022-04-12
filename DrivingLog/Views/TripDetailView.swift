@@ -33,7 +33,7 @@ struct TripDetailView: View {
             
             Spacer()
             
-            //Displaying supervisor unformation
+            //Displaying supervisor information
             Text("Supervisor: \(trip.supervisorName)")
                 .foregroundColor(Theme.primaryTextColor)
                 .font(.title3)
