@@ -14,11 +14,13 @@ struct ProgressView: View {
     
     var body: some View {
         ZStack {
+            //Makes the background go past the safe area
             Theme.appBackgroundColor
                 .ignoresSafeArea()
             
             VStack {
                 Spacer()
+                //Title above the progress bars
                 Text("Progress for \(drivingLog.name)")
                     .font(.title)
                     .bold()
@@ -29,6 +31,7 @@ struct ProgressView: View {
                 
                 Spacer()
                 
+                //buttons to either view saved trips or start a new trip
                 NavigationLink(
                     destination: TripListView(drivingLog: drivingLog),
                     label: {
@@ -57,6 +60,7 @@ struct ProgressView: View {
             }
         }
         .toolbar {
+            //icon that allows for user to share the pdf
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button {
                     shareDrivingDataPDF()
@@ -69,10 +73,12 @@ struct ProgressView: View {
         .sheet(isPresented: $newTripSheetIsPresented, content: {
             TripInProgressView(drivingLog: drivingLog)
         })
+        //title of screen
         .navigationTitle("Overall Progress")
     }
 }
 
+/*This struct makes a new progress view.*/
 struct ProgressView_Previews: PreviewProvider {
     
     static var previews: some View {
@@ -83,8 +89,11 @@ struct ProgressView_Previews: PreviewProvider {
 // MARK: internal views
 
 extension ProgressView {
+    /*This view generates the progress bars and the text that 
+    goes with them.*/
     func ProgressInfoSection() -> some View {
         VStack {
+            //Total driving time bar
             Text("\(totalDrivingTimeString()) out of 50 total driving hours")
                 .foregroundColor(Theme.primaryTextColor)
                 .padding([.leading, .trailing])
@@ -94,7 +103,7 @@ extension ProgressView {
                              color1: Theme.dayColor1,
                              color2: Theme.dayColor2)
                 .padding([.leading, .trailing, .bottom])
-            
+            //Time for night driving bar
             Text("\(nightDrivingTimeString()) out of 10 night driving hours")
                 .foregroundColor(Theme.primaryTextColor)
                 .padding([.leading, .trailing])
@@ -107,6 +116,7 @@ extension ProgressView {
         }
     }
     
+    /*This function allows the progress bar to appear correctly to the user.*/
     func ProgressBarStack(icon: Image, progress: CGFloat, color1: Color, color2: Color) -> some View {
         HStack {
             icon
@@ -120,14 +130,16 @@ extension ProgressView {
 // MARK: helper methods
 
 extension ProgressView {
+    /*This function returns the string for total driving time.*/
     func totalDrivingTimeString() -> String {
         return Utility.hoursMinutesString(from: drivingLog.getTotalDrivingTime())
     }
-    
+    /*This function returns the string for night driving time.*/
     func nightDrivingTimeString() -> String {
         return Utility.hoursMinutesString(from: drivingLog.getNightDrivingTime())
     }
-    
+    /*This function allows the PDF to be written and generates an item
+    to be shared.*/
     func shareDrivingDataPDF() {
         pdfManager.writeTripDataToPDF(for: drivingLog.trips, id: drivingLog.id)
         if let pdfURL = pdfManager.getDocumentURL(for: drivingLog.id) {
@@ -135,6 +147,8 @@ extension ProgressView {
         }
     }
     
+    /*This function gives the user the options on what to
+    do with the PDF generated from the driving log.*/
     func actionSheet(itemToShare: URL) {
         let activityVC = UIActivityViewController(activityItems: [itemToShare], applicationActivities: nil)
         UIApplication.shared.windows.first?.rootViewController?.present(activityVC, animated: true, completion: nil)
