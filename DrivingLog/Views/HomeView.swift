@@ -9,10 +9,12 @@ import SwiftUI
 
 struct HomeView: View {
     
+    //Initializing the variables needed for the Home View
     @State var profileName = ""
     @State var navigateToProgressView = false
     @State var showNewProfileSheet = false
     
+    //Initializing UI design colors
     init() {
         Theme.navigationBarColors(background: UIColor(named: "appBackgroundColor"),
                                   titleColor: UIColor(named: "primaryTextColor"),
@@ -21,6 +23,7 @@ struct HomeView: View {
         UITableView.appearance().tintColor = UIColor(named: "appAccentColor")
     }
     
+    //This represents what the user will see when they first launch the app
     var body: some View {
         NavigationView {
             ZStack {
@@ -30,9 +33,12 @@ struct HomeView: View {
                     
                     Spacer()
                     
+                    //App title
                     Text("Indiana Student Driving Tracker")
                         .font(.title2)
                         .bold()
+                    
+                    //App logo, instead of just a blank, boring template
                     Image("ISDTLogo")
                         .resizable()
                         .scaledToFit()
@@ -62,6 +68,7 @@ struct HomeView: View {
                         .padding(.bottom)
                 }
                 
+                //More UI design, using the colors initialized earlier
                 .navigationTitle("ISDT")
                 .foregroundColor(Theme.primaryTextColor)
                 .sheet(isPresented: $showNewProfileSheet, onDismiss: onProfileNameSaved, content: {
@@ -80,6 +87,7 @@ struct HomeView: View {
         
     }
     
+    /// This function allows for the user to navigate to the progress view IF there is a profile name.
     func onProfileNameSaved() {
         guard profileName != "" else {
             return
@@ -87,10 +95,13 @@ struct HomeView: View {
         navigateToProgressView.toggle()
     }
     
+    /// This function allows for the user to navigate to the new profile sheet IF there is not already a profile name.
     func onNewProfileTapped() {
         showNewProfileSheet.toggle()
     }
     
+    /// This function returns an alert IF the user attempts to create a profile with no name.
+    /// - Returns: An alert saying that the user needs to input a name.
     func noProfileNameAlert() -> Alert {
         return Alert(
             title: Text(""),
@@ -100,6 +111,7 @@ struct HomeView: View {
     }
 }
 
+//This works to produce a view preview of the home view in the Xcode IDE
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         HomeView()
