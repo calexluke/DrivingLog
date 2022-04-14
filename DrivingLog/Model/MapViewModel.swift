@@ -22,6 +22,7 @@ final class MapViewModel: NSObject, ObservableObject, CLLocationManagerDelegate 
     @Published var region = MKCoordinateRegion(center: MapDetails.startingLocation, span: MapDetails.defaultSpan)
     @Published var route = [Coordinate]()
     @Published var routeCL = [CLLocationCoordinate2D]()
+    @Published var locations = [CLLocation]()
     @Published var autoCenteringEnabled = true
     
     var locationManager: CLLocationManager?
@@ -76,7 +77,6 @@ final class MapViewModel: NSObject, ObservableObject, CLLocationManagerDelegate 
                   let location = locationManager.location else {
                       return
                   }
-            
             if locationManager.authorizationStatus == .authorizedAlways ||
                 locationManager.authorizationStatus == .authorizedWhenInUse {
                 let span = region.span // keep the same span, so user can control zoom
@@ -97,8 +97,9 @@ final class MapViewModel: NSObject, ObservableObject, CLLocationManagerDelegate 
             return
         }
         if let locationUpdate = locationManager.location {
-            let currentLocation = Coordinate(latitude: locationUpdate.coordinate.latitude, longitude: locationUpdate.coordinate.longitude)
-            self.route.append(currentLocation)
+            let currentCoordinate = Coordinate(latitude: locationUpdate.coordinate.latitude, longitude: locationUpdate.coordinate.longitude)
+            route.append(currentCoordinate)
+            locations.append(locationUpdate)
         }
     }
     

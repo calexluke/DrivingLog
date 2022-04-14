@@ -17,9 +17,9 @@ struct TripInProgressView: View {
     var drivingLog: DrivingLog
     let logsManager = DrivingLogsManager.sharedInstance
     let pdfManager = PDFManager()
+    let cloudManager = CloudManager()
     let startTime = Date()
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
-    
     
     var body: some View {
         VStack {
@@ -43,13 +43,9 @@ struct TripInProgressView: View {
                         })
                     }
                     Spacer()
-                    
                 }
             }
 
-            
-
-            //Regular view starts here, code should probably be modified accordingly as the map may throw things off
             Spacer()
 
             Text("\(getTimeString())")
@@ -135,9 +131,14 @@ struct TripInProgressView: View {
     /*This function adds the trip and its elements like the map view and times
     to the log and updates the PDF with that log.*/
     func addNewTrip() {
-        var newTrip = Trip(startTime: startTime, endTime: Date(), supervisorName: supervisorName)
+        var newTrip = Trip(startTime: startTime,
+                           endTime: Date(),
+                           supervisorName: supervisorName,
+                           logID: drivingLog.id)
         newTrip.route = mapViewModel.route
+        newTrip.locations = mapViewModel.locations
         drivingLog.addNewTrip(newTrip)
+        cloudManager.saveTrip(newTrip)
         logsManager.updateAndSaveLogsList(with: drivingLog)
         // write to pdf in BG thread
         DispatchQueue.global(qos: .default).async {

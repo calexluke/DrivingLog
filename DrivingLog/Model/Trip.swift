@@ -6,13 +6,26 @@
 //
 
 import Foundation
+import CoreLocation
 
 struct Trip: Identifiable, Codable {
-    let id: UUID
+    var id: UUID
+    var drivingLogID: UUID
     var startTime: Date
     var endTime: Date
     var supervisorName: String
+    var hasLocationData = false
     var route = [Coordinate]()
+    var locations = [CLLocation]()
+    
+    init(startTime: Date, endTime: Date, supervisorName: String, logID: UUID) {
+        self.startTime = startTime
+        self.endTime = endTime
+        self.supervisorName = supervisorName
+        self.id = UUID()
+        self.route = [Coordinate]()
+        self.drivingLogID = logID
+    }
     
     init(startTime: Date, endTime: Date, supervisorName: String) {
         self.startTime = startTime
@@ -20,8 +33,17 @@ struct Trip: Identifiable, Codable {
         self.supervisorName = supervisorName
         self.id = UUID()
         self.route = [Coordinate]()
+        self.drivingLogID = UUID()
     }
     
+    init() {
+        self.startTime = Date()
+        self.endTime = Date()
+        self.supervisorName = ""
+        self.id = UUID()
+        self.route = [Coordinate]()
+        self.drivingLogID = UUID()
+    }
     
     var totaldDurationInSeconds: Double {
         return endTime.timeIntervalSince(startTime)
@@ -126,6 +148,23 @@ struct Trip: Identifiable, Codable {
         let minutes = getMinutes(date: date)
         return String(hour) + ":" + String(minutes)
     }
+}
+
+// MARK: protocol conformance methods
+
+extension Trip {
+    // Add codable conformance: location information is not encoded or decoded
+    // (it will be fetched from icloud instead)
+    enum CodingKeys: String, CodingKey {
+        case id
+        case startTime
+        case endTime
+        case supervisorName
+        case hasLocationData
+        case route
+        case drivingLogID
+    }
+
 }
 
 struct Coordinate: Codable {

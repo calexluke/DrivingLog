@@ -41,6 +41,14 @@ struct TripDetailView: View {
             
             EditTripView(drivingLog: drivingLog, trip: trip)
         }
+        .onAppear {
+            CloudManager().fetchTrip(id: trip.id.uuidString, completionHandler: { fetchedTrip in
+                let trip = fetchedTrip
+                
+                print("finished fetching trip. start time: \(fetchedTrip.startTime), supervisor: \(fetchedTrip.supervisorName)")
+                print(fetchedTrip.locations)
+            })
+        }
         
         //Working with UI design
         .background(

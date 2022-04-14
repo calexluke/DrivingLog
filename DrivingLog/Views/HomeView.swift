@@ -76,6 +76,7 @@ struct HomeView: View {
                 })
                 .onAppear {
                     profileName = ""
+                    CloudManager().printUserRecord()
                 }
                 .background(
                     Theme.appBackgroundColor

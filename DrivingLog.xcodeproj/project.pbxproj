@@ -20,6 +20,8 @@
 		FA90E9CB27E6B02300AD8D5F /* AddNewTripView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA90E9CA27E6B02300AD8D5F /* AddNewTripView.swift */; };
 		FAA2EEF027FA06B800B75142 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA2EEEF27FA06B800B75142 /* Theme.swift */; };
 		FAA2EEF227FA3A6F00B75142 /* AddProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA2EEF127FA3A6F00B75142 /* AddProfileView.swift */; };
+		FABD390728064A7000DCA877 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FABD390628064A7000DCA877 /* CloudKit.framework */; };
+		FABD390928064ADE00DCA877 /* CloudManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABD390828064ADE00DCA877 /* CloudManager.swift */; };
 		FAC6461927A6DDBE003F51C3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC6461827A6DDBE003F51C3 /* AppDelegate.swift */; };
 		FAC6461B27A6DDBE003F51C3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC6461A27A6DDBE003F51C3 /* SceneDelegate.swift */; };
 		FAC6461D27A6DDBE003F51C3 /* ChooseLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC6461C27A6DDBE003F51C3 /* ChooseLogView.swift */; };
@@ -64,6 +66,9 @@
 		FA90E9CA27E6B02300AD8D5F /* AddNewTripView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewTripView.swift; sourceTree = "<group>"; };
 		FAA2EEEF27FA06B800B75142 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		FAA2EEF127FA3A6F00B75142 /* AddProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProfileView.swift; sourceTree = "<group>"; };
+		FABD390428064A6D00DCA877 /* DrivingLog.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DrivingLog.entitlements; sourceTree = "<group>"; };
+		FABD390628064A7000DCA877 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		FABD390828064ADE00DCA877 /* CloudManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudManager.swift; sourceTree = "<group>"; };
 		FAC6461527A6DDBE003F51C3 /* DrivingLog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DrivingLog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAC6461827A6DDBE003F51C3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FAC6461A27A6DDBE003F51C3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -92,6 +97,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FABD390728064A7000DCA877 /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -105,12 +111,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FABD390528064A7000DCA877 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FABD390628064A7000DCA877 /* CloudKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		FAC6460C27A6DDBE003F51C3 = {
 			isa = PBXGroup;
 			children = (
 				FAC6461727A6DDBE003F51C3 /* DrivingLog */,
 				FAD358F027B6BDEC00F70B7D /* DrivingLogTests */,
 				FAC6461627A6DDBE003F51C3 /* Products */,
+				FABD390528064A7000DCA877 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -126,6 +141,7 @@
 		FAC6461727A6DDBE003F51C3 /* DrivingLog */ = {
 			isa = PBXGroup;
 			children = (
+				FABD390428064A6D00DCA877 /* DrivingLog.entitlements */,
 				FAC6745127C18D9D00258C27 /* IndianaFormPDF.pdf */,
 				FAC6463727A6DFBB003F51C3 /* Common Views and Modifiers */,
 				FAC6463227A6DE07003F51C3 /* Model */,
@@ -177,6 +193,7 @@
 				FA74FB3B27CB0CE200D169DE /* MapViewModel.swift */,
 				FAC6463E27A6E1B6003F51C3 /* Trip.swift */,
 				FA0A57AC27B579720069CAD1 /* PDFManager.swift */,
+				FABD390828064ADE00DCA877 /* CloudManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -307,6 +324,7 @@
 				FAC6462027A6DDBE003F51C3 /* DrivingLog.xcdatamodeld in Sources */,
 				FA44F87827F607F600AA3E04 /* LineMapView.swift in Sources */,
 				FA8DE01027AEE33000DA3490 /* UserDefaultsManager.swift in Sources */,
+				FABD390928064ADE00DCA877 /* CloudManager.swift in Sources */,
 				FAC6461927A6DDBE003F51C3 /* AppDelegate.swift in Sources */,
 				FAC6461B27A6DDBE003F51C3 /* SceneDelegate.swift in Sources */,
 				FAC6463F27A6E1B6003F51C3 /* Trip.swift in Sources */,
@@ -482,9 +500,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = DrivingLog/DrivingLog.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"DrivingLog/Preview Content\"";
-				DEVELOPMENT_TEAM = D5C6P253A2;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = DrivingLog/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -493,6 +513,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.alexluke.DrivingLog;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -503,9 +524,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = DrivingLog/DrivingLog.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"DrivingLog/Preview Content\"";
-				DEVELOPMENT_TEAM = D5C6P253A2;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = DrivingLog/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -514,6 +537,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.alexluke.DrivingLog;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
