@@ -107,7 +107,7 @@ class CloudManager {
         return newRecord
     }
     
-    func fetchTripRecords(query: CKQuery, completionHandler: @escaping (Trip) -> Void) {
+    func fetchTripRecords(query: CKQuery, completionHandler: @escaping (Trip?, Error?) -> Void) {
         let queryOperation = CKQueryOperation(query: query)
         var tripRecords = [CKRecord]()
         
@@ -119,12 +119,13 @@ class CloudManager {
                         if let trip = self.tripFromRecord(record) {
                             print("fetched trip")
                             DispatchQueue.main.async {
-                                completionHandler(trip)
+                                completionHandler(trip, nil)
                             }
                         }
                         
                     case.failure(let error):
                         print("error getting record: \(error.localizedDescription)")
+                        completionHandler(nil, error)
                 }
             }
         } else {
@@ -134,7 +135,7 @@ class CloudManager {
                 if let trip = self.tripFromRecord(record) {
                     print("fetched trip")
                     DispatchQueue.main.async {
-                        completionHandler(trip)
+                        completionHandler(trip, nil)
                     }
                 }
             }
@@ -152,6 +153,7 @@ class CloudManager {
                         print(tripRecords)
                     case.failure(let error):
                         print("error during records query: \(error.localizedDescription)")
+                        completionHandler(nil, error)
                 }
             }
         } else {
@@ -160,6 +162,7 @@ class CloudManager {
                 // recipeRecords now contains all records fetched during the lifetime of the operation
                 if let error = error {
                     print("error fetchign trip records: \(error.localizedDescription)")
+                    completionHandler(nil, error)
                 }
                 print("finished fetching trip records: ")
                 print(tripRecords)
@@ -169,14 +172,15 @@ class CloudManager {
 
     }
     
-    func fetchTrip(id: String, completionHandler: @escaping (Trip) -> Void) {
-        let predicate = NSPredicate(format: "id == %@", id)
+    func fetchTrip(id: UUID, completionHandler: @escaping (Trip?, Error?) -> Void) {
+        let idString = id.uuidString
+        let predicate = NSPredicate(format: "id == %@", idString)
         let query = CKQuery(recordType: tripRecord, predicate: predicate)
         fetchTripRecords(query: query, completionHandler: completionHandler)
     }
     
     // load all records of the specific type
-    func fetchAllTrips(completionHandler: @escaping (Trip) -> Void) {
+    func fetchAllTrips(completionHandler: @escaping (Trip?, Error?) -> Void) {
         let predicate = NSPredicate(value: true)
         let query = CKQuery(recordType: tripRecord, predicate: predicate)
         fetchTripRecords(query: query, completionHandler: completionHandler)

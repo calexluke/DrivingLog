@@ -21,8 +21,8 @@ final class MapViewModel: NSObject, ObservableObject, CLLocationManagerDelegate 
 
     @Published var region = MKCoordinateRegion(center: MapDetails.startingLocation, span: MapDetails.defaultSpan)
     @Published var route = [Coordinate]()
-    @Published var routeCL = [CLLocationCoordinate2D]()
     @Published var locations = [CLLocation]()
+//    @Published var routeCL = [CLLocationCoordinate2D]()
     @Published var autoCenteringEnabled = true
     
     var locationManager: CLLocationManager?
@@ -103,14 +103,12 @@ final class MapViewModel: NSObject, ObservableObject, CLLocationManagerDelegate 
         }
     }
     
-    func populateCLCoords() {
-        DispatchQueue.global(qos: .default).async {
-            let CLCoords = self.route.map {
-                CLLocationCoordinate2D(latitude: $0.latitude, longitude: $0.longitude)
-            }
-            DispatchQueue.main.async {
-                self.routeCL = CLCoords
-            }
+    func centerMapOnStartingLocation() {
+        guard let startingLocation = locations.first else {
+            return
         }
+        let startingLocationCL = CLLocationCoordinate2D(latitude: startingLocation.coordinate.latitude,
+                                                        longitude: startingLocation.coordinate.longitude)
+        region = MKCoordinateRegion(center: startingLocationCL, span: MapDetails.defaultSpan)
     }
 }

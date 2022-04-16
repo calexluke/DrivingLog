@@ -11,6 +11,8 @@ import SwiftUI
 struct EditTripView: View {
     
     let logsManager = DrivingLogsManager.sharedInstance
+    let cloudManager = CloudManager()
+    let pdfManager = PDFManager()
     @ObservedObject var drivingLog: DrivingLog
     @State var trip: Trip
     
@@ -41,6 +43,10 @@ struct EditTripView: View {
             Button("Save Changes") {
                 drivingLog.editTrip(tripWithChanges: trip)
                 logsManager.updateAndSaveLogsList(with: drivingLog)
+                DispatchQueue.global(qos: .default).async {
+                    pdfManager.writeTripDataToPDF(for: drivingLog.trips, id: drivingLog.id)
+                    cloudManager.saveTrip(trip)
+                }
             }
             .modifier(ButtonModifier())
             .padding(.bottom)

@@ -137,11 +137,12 @@ struct TripInProgressView: View {
                            logID: drivingLog.id)
         newTrip.route = mapViewModel.route
         newTrip.locations = mapViewModel.locations
+        newTrip.hasLocationData = true
         drivingLog.addNewTrip(newTrip)
-        cloudManager.saveTrip(newTrip)
         logsManager.updateAndSaveLogsList(with: drivingLog)
         // write to pdf in BG thread
         DispatchQueue.global(qos: .default).async {
+            cloudManager.saveTrip(newTrip)
             pdfManager.writeTripDataToPDF(for: drivingLog.trips, id: drivingLog.id)
         }
     }

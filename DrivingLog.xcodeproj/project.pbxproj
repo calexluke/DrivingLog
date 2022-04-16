@@ -504,7 +504,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"DrivingLog/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = D5C6P253A2;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = DrivingLog/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -528,7 +528,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"DrivingLog/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = D5C6P253A2;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = DrivingLog/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (

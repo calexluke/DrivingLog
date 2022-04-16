@@ -17,6 +17,7 @@ struct AddNewTripView: View {
     @State var supervisorName = ""
     @State var dateError = false
     let pdfManager = PDFManager()
+    let cloudManager = CloudManager()
     
     var body: some View {
         VStack {
@@ -96,6 +97,7 @@ struct AddNewTripView: View {
         // write to pdf in BG thread
         DispatchQueue.global(qos: .default).async {
             pdfManager.writeTripDataToPDF(for: drivingLog.trips, id: drivingLog.id)
+            cloudManager.saveTrip(newTrip)
         }
         presentationMode.wrappedValue.dismiss()
     }
