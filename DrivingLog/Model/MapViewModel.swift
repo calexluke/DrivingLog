@@ -22,7 +22,6 @@ final class MapViewModel: NSObject, ObservableObject, CLLocationManagerDelegate 
     @Published var region = MKCoordinateRegion(center: MapDetails.startingLocation, span: MapDetails.defaultSpan)
     @Published var route = [Coordinate]()
     @Published var locations = [CLLocation]()
-//    @Published var routeCL = [CLLocationCoordinate2D]()
     @Published var autoCenteringEnabled = true
     
     var locationManager: CLLocationManager?
@@ -31,9 +30,8 @@ final class MapViewModel: NSObject, ObservableObject, CLLocationManagerDelegate 
         // use default values for properties
     }
     
-    init(region: MKCoordinateRegion, route: [Coordinate]) {
+    init(region: MKCoordinateRegion) {
         self.region = region
-        self.route = route
     }
     
     /*A function that checks if the location is enabled. If it is enabled,
@@ -97,8 +95,6 @@ final class MapViewModel: NSObject, ObservableObject, CLLocationManagerDelegate 
             return
         }
         if let locationUpdate = locationManager.location {
-            let currentCoordinate = Coordinate(latitude: locationUpdate.coordinate.latitude, longitude: locationUpdate.coordinate.longitude)
-            route.append(currentCoordinate)
             locations.append(locationUpdate)
         }
     }

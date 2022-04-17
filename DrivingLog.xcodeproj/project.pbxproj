@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		FA04C9EF27B8548100C24D0C /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA04C9EE27B8548100C24D0C /* Utility.swift */; };
 		FA0A57AD27B579720069CAD1 /* PDFManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0A57AC27B579720069CAD1 /* PDFManager.swift */; };
+		FA142493280B9647008FF9A4 /* ActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA142492280B9647008FF9A4 /* ActivityView.swift */; };
 		FA44F87827F607F600AA3E04 /* LineMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA44F87727F607F600AA3E04 /* LineMapView.swift */; };
 		FA57E47F27D1B13900B94AF8 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA57E47E27D1B13900B94AF8 /* HomeView.swift */; };
 		FA73E8CA27EF9BA900D26D66 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA73E8C927EF9BA900D26D66 /* ProgressBar.swift */; };
@@ -55,6 +56,7 @@
 /* Begin PBXFileReference section */
 		FA04C9EE27B8548100C24D0C /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		FA0A57AC27B579720069CAD1 /* PDFManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFManager.swift; sourceTree = "<group>"; };
+		FA142492280B9647008FF9A4 /* ActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityView.swift; sourceTree = "<group>"; };
 		FA44F87727F607F600AA3E04 /* LineMapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineMapView.swift; sourceTree = "<group>"; };
 		FA57E47E27D1B13900B94AF8 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		FA73E8C927EF9BA900D26D66 /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
@@ -182,6 +184,7 @@
 				FA90E9CA27E6B02300AD8D5F /* AddNewTripView.swift */,
 				FA73E8C927EF9BA900D26D66 /* ProgressBar.swift */,
 				FAA2EEF127FA3A6F00B75142 /* AddProfileView.swift */,
+				FA142492280B9647008FF9A4 /* ActivityView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -333,6 +336,7 @@
 				FAC6463927A6DFDD003F51C3 /* Modifiers.swift in Sources */,
 				FA90E9CB27E6B02300AD8D5F /* AddNewTripView.swift in Sources */,
 				FA74FB3A27CB05CC00D169DE /* MapView.swift in Sources */,
+				FA142493280B9647008FF9A4 /* ActivityView.swift in Sources */,
 				FAC6464927A6E319003F51C3 /* TripListView.swift in Sources */,
 				FAA2EEF227FA3A6F00B75142 /* AddProfileView.swift in Sources */,
 				FA73E8CA27EF9BA900D26D66 /* ProgressBar.swift in Sources */,

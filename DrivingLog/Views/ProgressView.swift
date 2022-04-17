@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ProgressView: View {
     @State var newTripSheetIsPresented = false
+    @State var sharingPDF = false
     @ObservedObject var drivingLog: DrivingLog
     let pdfManager = PDFManager()
     
@@ -59,12 +60,17 @@ struct ProgressView: View {
     //            .ignoresSafeArea()
             }
         }
+        .sheet(isPresented: $sharingPDF, onDismiss: {
+            print("share pdf sheet dismissed")
+        }, content: {
+            ActivityView(activityItems: [pdfManager.getDocumentURL(for: drivingLog.id) ?? "Error retrieveing PDF document"])
+        })
         .toolbar {
             //icon that allows for user to share the pdf
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button {
-                    shareDrivingDataPDF()
-                    print("Share data as pdf!")
+                    print("Share pdf in actionsheet button tapped")
+                    sharingPDF = true
                 } label: {
                     Image(systemName: "square.and.arrow.up")
                 }
@@ -137,20 +143,5 @@ extension ProgressView {
     /*This function returns the string for night driving time.*/
     func nightDrivingTimeString() -> String {
         return Utility.hoursMinutesString(from: drivingLog.getNightDrivingTime())
-    }
-    /*This function allows the PDF to be written and generates an item
-    to be shared.*/
-    func shareDrivingDataPDF() {
-        pdfManager.writeTripDataToPDF(for: drivingLog.trips, id: drivingLog.id)
-        if let pdfURL = pdfManager.getDocumentURL(for: drivingLog.id) {
-            actionSheet(itemToShare: pdfURL)
-        }
-    }
-    
-    /*This function gives the user the options on what to
-    do with the PDF generated from the driving log.*/
-    func actionSheet(itemToShare: URL) {
-        let activityVC = UIActivityViewController(activityItems: [itemToShare], applicationActivities: nil)
-        UIApplication.shared.windows.first?.rootViewController?.present(activityVC, animated: true, completion: nil)
     }
 }

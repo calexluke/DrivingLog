@@ -15,7 +15,6 @@ struct Trip: Identifiable, Codable {
     var endTime: Date
     var supervisorName: String
     var hasLocationData = false
-    var route = [Coordinate]()
     var locations = [CLLocation]()
     
     init(startTime: Date, endTime: Date, supervisorName: String, logID: UUID) {
@@ -23,7 +22,6 @@ struct Trip: Identifiable, Codable {
         self.endTime = endTime
         self.supervisorName = supervisorName
         self.id = UUID()
-        self.route = [Coordinate]()
         self.drivingLogID = logID
     }
     
@@ -32,7 +30,6 @@ struct Trip: Identifiable, Codable {
         self.endTime = endTime
         self.supervisorName = supervisorName
         self.id = UUID()
-        self.route = [Coordinate]()
         self.drivingLogID = UUID()
     }
     
@@ -41,7 +38,6 @@ struct Trip: Identifiable, Codable {
         self.endTime = Date()
         self.supervisorName = ""
         self.id = UUID()
-        self.route = [Coordinate]()
         self.drivingLogID = UUID()
     }
     
@@ -161,7 +157,6 @@ extension Trip {
         case endTime
         case supervisorName
         case hasLocationData
-        case route
         case drivingLogID
     }
 

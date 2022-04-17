@@ -135,7 +135,6 @@ struct TripInProgressView: View {
                            endTime: Date(),
                            supervisorName: supervisorName,
                            logID: drivingLog.id)
-        newTrip.route = mapViewModel.route
         newTrip.locations = mapViewModel.locations
         newTrip.hasLocationData = true
         drivingLog.addNewTrip(newTrip)
