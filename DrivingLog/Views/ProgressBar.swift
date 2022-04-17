@@ -28,6 +28,8 @@ struct ProgressBar: View {
         var percentToDisplay = percent
         if percent > 0 && percent <= minimumPercentToDisplay {
             percentToDisplay = minimumPercentToDisplay
+        } else if percent > 1 {
+            percentToDisplay = 1
         }
         return percentToDisplay * width
     }

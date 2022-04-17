@@ -40,4 +40,12 @@ struct Utility {
         
         return "\(hourString):\(minuteString)"
     }
+    
+    static func boolFromInt(_ int: Int) -> Bool {
+        return (int == 0) ? false : true
+    }
+    
+    static func intFromBool(_ bool: Bool) -> Int {
+        return (bool == true) ? 1 : 0
+    }
 }

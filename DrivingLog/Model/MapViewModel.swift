@@ -21,7 +21,7 @@ final class MapViewModel: NSObject, ObservableObject, CLLocationManagerDelegate 
 
     @Published var region = MKCoordinateRegion(center: MapDetails.startingLocation, span: MapDetails.defaultSpan)
     @Published var route = [Coordinate]()
-    @Published var routeCL = [CLLocationCoordinate2D]()
+    @Published var locations = [CLLocation]()
     @Published var autoCenteringEnabled = true
     
     var locationManager: CLLocationManager?
@@ -30,9 +30,8 @@ final class MapViewModel: NSObject, ObservableObject, CLLocationManagerDelegate 
         // use default values for properties
     }
     
-    init(region: MKCoordinateRegion, route: [Coordinate]) {
+    init(region: MKCoordinateRegion) {
         self.region = region
-        self.route = route
     }
     
     /*A function that checks if the location is enabled. If it is enabled,
@@ -76,7 +75,6 @@ final class MapViewModel: NSObject, ObservableObject, CLLocationManagerDelegate 
                   let location = locationManager.location else {
                       return
                   }
-            
             if locationManager.authorizationStatus == .authorizedAlways ||
                 locationManager.authorizationStatus == .authorizedWhenInUse {
                 let span = region.span // keep the same span, so user can control zoom
@@ -97,19 +95,16 @@ final class MapViewModel: NSObject, ObservableObject, CLLocationManagerDelegate 
             return
         }
         if let locationUpdate = locationManager.location {
-            let currentLocation = Coordinate(latitude: locationUpdate.coordinate.latitude, longitude: locationUpdate.coordinate.longitude)
-            self.route.append(currentLocation)
+            locations.append(locationUpdate)
         }
     }
     
-    func populateCLCoords() {
-        DispatchQueue.global(qos: .default).async {
-            let CLCoords = self.route.map {
-                CLLocationCoordinate2D(latitude: $0.latitude, longitude: $0.longitude)
-            }
-            DispatchQueue.main.async {
-                self.routeCL = CLCoords
-            }
+    func centerMapOnStartingLocation() {
+        guard let startingLocation = locations.first else {
+            return
         }
+        let startingLocationCL = CLLocationCoordinate2D(latitude: startingLocation.coordinate.latitude,
+                                                        longitude: startingLocation.coordinate.longitude)
+        region = MKCoordinateRegion(center: startingLocationCL, span: MapDetails.defaultSpan)
     }
 }

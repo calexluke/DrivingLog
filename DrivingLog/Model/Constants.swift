@@ -19,6 +19,7 @@ struct StringConstants {
     static let cancelAlertMessage = "You will lose any saved data for this trip"
     static let deletProfileAlertMessage = "You will lose any saved data for this profile"
     static let pdfDateFormat = "MM/dd/yyyy"
+    static let CloudContainerID = "iCloud.com.alexluke.DrivingLog"
 }
 
 struct FloatConstants {

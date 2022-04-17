@@ -11,15 +11,16 @@ struct TripDetailView: View {
     
     //Initializing all of the variables and constants necessary for the Trip Detail View
     @ObservedObject var drivingLog: DrivingLog
-    @ObservedObject var mapViewModel = MapViewModel()
+    @StateObject var mapViewModel = MapViewModel()
     @State var trip: Trip
+    @State var fetchTripError = false
     let logsManager = DrivingLogsManager.sharedInstance
+    let cloudManager = CloudManager()
     
     //Initializing a Driving Log object and a Trip object, both of which are needed for this view to function
     init(drivingLog: DrivingLog, selectedTrip: Trip) {
         self.drivingLog = drivingLog
         _trip = State<Trip>.init(initialValue: selectedTrip)
-        setMapViewModel()
     }
     
     //This is what the user will see when they load up the Trip Detail View
@@ -41,6 +42,9 @@ struct TripDetailView: View {
             
             EditTripView(drivingLog: drivingLog, trip: trip)
         }
+        .onAppear {
+            cloudManager.fetchTrip(id: trip.id, completionHandler: onTripFetched(fetchedTrip:error:))
+        }
         
         //Working with UI design
         .background(
@@ -50,55 +54,48 @@ struct TripDetailView: View {
         .navigationTitle("Trip detail")
     }
     
+    func onTripFetched(fetchedTrip: Trip?, error: Error?) {
+        guard error == nil else {
+            fetchTripError = true
+            print(error!.localizedDescription)
+            return
+        }
+        
+        guard let fetchedTrip = fetchedTrip else {
+            return
+        }
+        
+        trip = fetchedTrip
+        mapViewModel.locations = fetchedTrip.locations
+        mapViewModel.centerMapOnStartingLocation()
+        print("finished fetching trip. start time: \(fetchedTrip.startTime), supervisor: \(fetchedTrip.supervisorName)")
+        print(fetchedTrip.locations)
+    }
+    
     @ViewBuilder
     /// This function returns a view depending on whether or not there is a route associated with a particular trip.
     /// - Returns: A view either with or without the trip route, depending on if there is a route in the trip object.
     func tripRouteView() -> some View {
-        if trip.route.isEmpty {
+        if !trip.hasLocationData {
             Text("No route information available")
                 .foregroundColor(Theme.primaryTextColor)
                 .font(.title2)
         } else {
-            //LineMapView(mapViewModel: mapViewModelFromTrip())
             LineMapView(mapViewModel: mapViewModel)
               .ignoresSafeArea(edges: .top)
               .frame(height: 300)
+              .alert(isPresented: $fetchTripError) {
+                  fetchTripErrorAlert()
+              }
         }
     }
     
-    /// This function sets the Map View Model to have an appropriate location center, region, and polyline.
-    func setMapViewModel() {
-        guard let startingLocation = trip.route.first else {
-            return
-        }
-        
-        //Centering the map on the appropriate location center, region, and polyline
-        DispatchQueue.global(qos: .default).async {
-            let startingLocationCL = CLLocationCoordinate2D(latitude: startingLocation.latitude,
-                                                    longitude: startingLocation.longitude)
-            let region = MKCoordinateRegion(center: startingLocationCL, span: MapDetails.defaultSpan)
-            let route = trip.route
-            
-            DispatchQueue.main.async {
-                self.mapViewModel.region = region
-                self.mapViewModel.route = route
-                self.mapViewModel.populateCLCoords()
-            }
-        }
-    }
-    
-    /// This function returns a MapViewModel which is created and set up by the function itself.
-    /// - Returns: A MapViewModel which has everything set up as necessary, such as the center, region, etc.
-    func mapViewModelFromTrip() -> MapViewModel {
-        guard let startingLocation = trip.route.first else {
-            return MapViewModel()
-        }
-        let startingLocationCL = CLLocationCoordinate2D(latitude: startingLocation.latitude,
-                                                longitude: startingLocation.longitude)
-        let region = MKCoordinateRegion(center: startingLocationCL, span: MapDetails.defaultSpan)
-        let viewModel = MapViewModel(region: region, route: trip.route)
-        viewModel.populateCLCoords()
-        return viewModel
+    func fetchTripErrorAlert() -> Alert {
+        return Alert(
+            title: Text(""),
+            message: Text("Error fetching trip location data from iCloud"),
+            dismissButton: .default(Text("OK"))
+        )
     }
 }
 

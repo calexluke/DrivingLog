@@ -12,16 +12,20 @@ struct LineMapView: UIViewRepresentable {
     
     //Creating an instance of the MapViewModel
     @ObservedObject var mapViewModel: MapViewModel
-    
+
     /// This function initializes an MKMapView to be put on the Trip Detail View.
     /// - Parameter context: The view's initial state.
     /// - Returns: The MKMapView to be displayed.
     func makeUIView(context: Context) -> MKMapView {
+        let routeCoordinates = mapViewModel.locations.map {
+            CLLocationCoordinate2D(latitude: $0.coordinate.latitude,
+                                   longitude: $0.coordinate.longitude)
+        }
         let mapView = MKMapView()
         mapView.delegate = context.coordinator
         mapView.region = mapViewModel.region
         
-        let polyline = MKPolyline(coordinates: mapViewModel.routeCL, count: mapViewModel.routeCL.count)
+        let polyline = MKPolyline(coordinates: routeCoordinates, count: routeCoordinates.count)
         mapView.addOverlay(polyline)
         
         return mapView
@@ -31,7 +35,12 @@ struct LineMapView: UIViewRepresentable {
     /// - Parameter view: The MKMapView to be updated.
     /// - Parameter context: The view's initial state.
     func updateUIView(_ view: MKMapView, context: Context) {
-        let polyline = MKPolyline(coordinates: mapViewModel.routeCL, count: mapViewModel.routeCL.count)
+        let routeCoordinates = mapViewModel.locations.map {
+            CLLocationCoordinate2D(latitude: $0.coordinate.latitude,
+                                   longitude: $0.coordinate.longitude)
+        }
+        view.region = mapViewModel.region
+        let polyline = MKPolyline(coordinates: routeCoordinates, count: routeCoordinates.count)
         view.addOverlay(polyline)
     }
     

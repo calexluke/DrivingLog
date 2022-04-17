@@ -12,6 +12,7 @@ struct ChooseLogView: View {
     @ObservedObject var logsManager = DrivingLogsManager.sharedInstance
     @State var selectedLog = DrivingLog(name: "default")
     @State var deleteProfileAlertIsPresented = false
+    @State var navigateToProgressView = false
     
     //sets the current log to the one that was selected
     init(selectedLog: DrivingLog) {
@@ -43,13 +44,24 @@ struct ChooseLogView: View {
             Spacer()
             
             // navigate to ProgressView with selected log
-            NavigationLink(
-                destination: ProgressView(drivingLog: selectedLog),
-                label: {
-                    Text("Load Selected Profile")
-                        .modifier(ButtonModifier())
-                })
+            NavigationLink(destination: ProgressView(drivingLog: selectedLog),
+                           isActive: $navigateToProgressView, label: {
+                Button("Load Selected Profile") {
+                    writeSelectedLogToPDF()
+                    navigateToProgressView = true
+                }
+                .modifier(ButtonModifier())
                 .padding([.bottom, .top])
+            })
+            
+//            // navigate to ProgressView with selected log
+//            NavigationLink(
+//                destination: ProgressView(drivingLog: selectedLog),
+//                label: {
+//                    Text("Load Selected Profile")
+//                        .modifier(ButtonModifier())
+//                })
+//                .padding([.bottom, .top])
             
             //deletes a profile if this button is clicked
             Button("Delete Selected Profile") {
@@ -102,6 +114,12 @@ struct ChooseLogView: View {
         logsManager.deleteLog(id: selectedLog.id)
         if let lastLog = logsManager.listOfLogs.last {
             selectedLog = lastLog
+        }
+    }
+    
+    func writeSelectedLogToPDF() {
+        DispatchQueue.global(qos: .default).async {
+            PDFManager().writeTripDataToPDF(for: selectedLog.trips, id: selectedLog.id)
         }
     }
 }
