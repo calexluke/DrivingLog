@@ -14,6 +14,7 @@ struct TripDetailView: View {
     @StateObject var mapViewModel = MapViewModel()
     @State var trip: Trip
     @State var fetchTripError = false
+    @State var tripErrorMessage = ""
     let logsManager = DrivingLogsManager.sharedInstance
     let cloudManager = CloudManager()
     
@@ -56,6 +57,7 @@ struct TripDetailView: View {
     
     func onTripFetched(fetchedTrip: Trip?, error: Error?) {
         guard error == nil else {
+            tripErrorMessage = error!.localizedDescription
             fetchTripError = true
             print(error!.localizedDescription)
             return
@@ -92,8 +94,8 @@ struct TripDetailView: View {
     
     func fetchTripErrorAlert() -> Alert {
         return Alert(
-            title: Text(""),
-            message: Text("Error fetching trip location data from iCloud"),
+            title: Text("Error fetching trip location data from iCloud"),
+            message: Text(tripErrorMessage),
             dismissButton: .default(Text("OK"))
         )
     }
