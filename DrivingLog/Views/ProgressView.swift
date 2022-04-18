@@ -11,6 +11,7 @@ struct ProgressView: View {
     @State var newTripSheetIsPresented = false
     @State var sharingPDF = false
     @ObservedObject var drivingLog: DrivingLog
+    @StateObject var cloudViewModel = CloudViewModel.sharedInstance
     let pdfManager = PDFManager()
     
     var body: some View {
@@ -46,18 +47,9 @@ struct ProgressView: View {
                 }
                 .modifier(ButtonModifier())
                 .padding(.bottom)
-
-    //            // for debug and demo
-    //            Button("Share Mock data pdf") {
-    //                let mockLog = MockDrivingLog()
-    //                pdfManager.writeTripDataToPDF(for: mockLog.trips, id: mockLog.id)
-    //                if let pdfURL = pdfManager.getDocumentURL(for: mockLog.id) {
-    //                    actionSheet(itemToShare: pdfURL)
-    //                }
-    //            }
-    //            .modifier(ButtonModifier())
-    //            .padding(.bottom)
-    //            .ignoresSafeArea()
+            }
+            .alert(isPresented: $cloudViewModel.cloudSaveError) {
+                cloudSaveErrorAlert()
             }
         }
         .sheet(isPresented: $sharingPDF, onDismiss: {
@@ -143,5 +135,13 @@ extension ProgressView {
     /*This function returns the string for night driving time.*/
     func nightDrivingTimeString() -> String {
         return Utility.hoursMinutesString(from: drivingLog.getNightDrivingTime())
+    }
+    
+    func cloudSaveErrorAlert() -> Alert {
+        return Alert(
+            title: Text("Error saving trip location data to iCloud"),
+            message: Text(cloudViewModel.cloudSaveErrorMessage),
+            dismissButton: .default(Text("OK"))
+        )
     }
 }
