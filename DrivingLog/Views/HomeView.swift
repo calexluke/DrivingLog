@@ -11,8 +11,10 @@ struct HomeView: View {
     
     //Initializing the variables needed for the Home View
     @State var profileName = ""
+    @State var newLog = DrivingLog(name: "default")
     @State var navigateToProgressView = false
     @State var showNewProfileSheet = false
+    @ObservedObject var logsManager = DrivingLogsManager.sharedInstance
     
     //Initializing UI design colors
     init() {
@@ -58,7 +60,7 @@ struct HomeView: View {
                     
                     // navigate to ProgressView with new DrivingLog object
                     NavigationLink(
-                        destination: ProgressView(drivingLog: DrivingLog(name: profileName)),
+                        destination: ProgressView(drivingLog: newLog),
                         isActive: $navigateToProgressView,
                         label: {
                             Button("Start New Profile") {
@@ -91,7 +93,7 @@ struct HomeView: View {
     
     @ViewBuilder
     func chooseProfileButton() -> some View {
-        if DrivingLogsManager.sharedInstance.listOfLogs.isEmpty {
+        if logsManager.listOfLogs.isEmpty {
             EmptyView()
         } else {
             // navigate to choose profile screen
@@ -110,8 +112,8 @@ struct HomeView: View {
         guard profileName != "" else {
             return
         }
-        let newLog = DrivingLog(name: profileName)
-        DrivingLogsManager.sharedInstance.updateAndSaveLogsList(with: newLog)
+        newLog = DrivingLog(name: profileName)
+        logsManager.updateAndSaveLogsList(with: newLog)
         navigateToProgressView.toggle()
     }
     
