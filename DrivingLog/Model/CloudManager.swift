@@ -203,9 +203,20 @@ class CloudManager {
     private func saveRecord(_ record: CKRecord) {
         container.privateCloudDatabase.save(record) { _, error in
             guard error == nil else {
-                // top-notch error handling
-                self.cloudViewModel.cloudSaveErrorMessage = error!.localizedDescription
-                self.cloudViewModel.cloudSaveError = true
+                if let ckError = error as? CKError {
+                    switch ckError.code {
+                        case .quotaExceeded:
+                            self.cloudViewModel.cloudSaveErrorMessage = "Your iCloud storage is full. In order to save trip location data, please manage your iCloud settings."
+                            // handle other error codes here as needed
+                        default:
+                            self.cloudViewModel.cloudSaveErrorMessage = error!.localizedDescription
+                    }
+                } else {
+                    self.cloudViewModel.cloudSaveErrorMessage = error!.localizedDescription
+                }
+                DispatchQueue.main.async {
+                    self.cloudViewModel.cloudSaveError = true
+                }
                 print("error saving record: \(error!.localizedDescription)")
                 return
             }

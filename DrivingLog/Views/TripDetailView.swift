@@ -57,8 +57,10 @@ struct TripDetailView: View {
     
     func onTripFetched(fetchedTrip: Trip?, error: Error?) {
         guard error == nil else {
-            cloudViewModel.tripErrorMessage = error!.localizedDescription
-            cloudViewModel.fetchTripError = true
+            DispatchQueue.main.async {
+                cloudViewModel.tripErrorMessage = error!.localizedDescription
+                cloudViewModel.fetchTripError = true
+            }
             print(error!.localizedDescription)
             return
         }
@@ -66,12 +68,13 @@ struct TripDetailView: View {
         guard let fetchedTrip = fetchedTrip else {
             return
         }
-        
-        trip = fetchedTrip
-        mapViewModel.locations = fetchedTrip.locations
-        mapViewModel.centerMapOnStartingLocation()
-        print("finished fetching trip. start time: \(fetchedTrip.startTime), supervisor: \(fetchedTrip.supervisorName)")
-        print(fetchedTrip.locations)
+        DispatchQueue.main.async {
+            trip = fetchedTrip
+            mapViewModel.locations = fetchedTrip.locations
+            mapViewModel.centerMapOnStartingLocation()
+            print("finished fetching trip. start time: \(fetchedTrip.startTime), supervisor: \(fetchedTrip.supervisorName)")
+            print(fetchedTrip.locations)
+        }
     }
     
     @ViewBuilder
