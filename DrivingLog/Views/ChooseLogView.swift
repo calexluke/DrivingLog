@@ -54,15 +54,6 @@ struct ChooseLogView: View {
                 .padding([.bottom, .top])
             })
             
-//            // navigate to ProgressView with selected log
-//            NavigationLink(
-//                destination: ProgressView(drivingLog: selectedLog),
-//                label: {
-//                    Text("Load Selected Profile")
-//                        .modifier(ButtonModifier())
-//                })
-//                .padding([.bottom, .top])
-            
             //deletes a profile if this button is clicked
             Button("Delete Selected Profile") {
                 deleteProfileAlertIsPresented.toggle()
@@ -82,15 +73,10 @@ struct ChooseLogView: View {
         //text on top of screen
         .navigationTitle("Select a saved profile")
         .onAppear {
-            if let lastLog = logsManager.listOfLogs.last {
-                selectedLog = lastLog
-            }
-            
-            // for debug only, add fake profiles to the list
-            if !logsManager.containsLog(name: "Test1") &&
-                !logsManager.containsLog(name: "Test2") {
-                logsManager.listOfLogs.append(DrivingLog(name: "Test1"))
-                logsManager.listOfLogs.append(DrivingLog(name: "Test2"))
+            if selectedLog.name == "default" {
+                if let lastLog = logsManager.listOfLogs.last {
+                    selectedLog = lastLog
+                }
             }
         }
     }

@@ -46,14 +46,15 @@ struct HomeView: View {
                     
                     Spacer()
                     
-                    // navigate to choose profile screen
-                    NavigationLink(
-                        destination: ChooseLogView(),
-                        label: {
-                            Text("Open A Saved Profile")
-                                .modifier(ButtonModifier())
-                        })
-                        .padding(.bottom)
+                    chooseProfileButton()
+//                    // navigate to choose profile screen
+//                    NavigationLink(
+//                        destination: ChooseLogView(),
+//                        label: {
+//                            Text("Open A Saved Profile")
+//                                .modifier(ButtonModifier())
+//                        })
+//                        .padding(.bottom)
                     
                     // navigate to ProgressView with new DrivingLog object
                     NavigationLink(
@@ -88,11 +89,29 @@ struct HomeView: View {
         
     }
     
+    @ViewBuilder
+    func chooseProfileButton() -> some View {
+        if DrivingLogsManager.sharedInstance.listOfLogs.isEmpty {
+            EmptyView()
+        } else {
+            // navigate to choose profile screen
+            NavigationLink(
+                destination: ChooseLogView(),
+                label: {
+                    Text("Open A Saved Profile")
+                        .modifier(ButtonModifier())
+                })
+                .padding(.bottom)
+        }
+    }
+    
     /// This function allows for the user to navigate to the progress view IF there is a profile name.
     func onProfileNameSaved() {
         guard profileName != "" else {
             return
         }
+        let newLog = DrivingLog(name: profileName)
+        DrivingLogsManager.sharedInstance.updateAndSaveLogsList(with: newLog)
         navigateToProgressView.toggle()
     }
     

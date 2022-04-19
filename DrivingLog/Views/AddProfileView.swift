@@ -48,6 +48,7 @@ struct AddProfileView: View {
             
             //button that cancels profile creation
             Button("Cancel") {
+                newProfileName = ""
                 presentationMode.wrappedValue.dismiss()
             }
             .modifier(ButtonModifier())
