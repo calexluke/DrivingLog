@@ -56,10 +56,13 @@ struct AddNewTripView: View {
             
             Spacer()
             //button to save all changes on the app
-            Button("Save") {
+            Button(action: {
                 saveNewTrip()
-            }
-            .modifier(ButtonModifier())
+            }, label: {
+                Text("Save")
+                    .modifier(ButtonModifier())
+                    .padding(.bottom)
+            })
             .alert(isPresented: $dateError) {
                 //error message if the end time is before the start time
                 Alert(
@@ -69,11 +72,13 @@ struct AddNewTripView: View {
                     )
             }
             //button to cancel adding a new trip
-            Button("Cancel") {
+            Button(action: {
                 presentationMode.wrappedValue.dismiss()
-            }
-            .modifier(ButtonModifier())
-            .padding(.bottom)
+            }, label: {
+                Text("Cancel")
+                    .modifier(ButtonModifier())
+                    .padding(.bottom)
+            })
         }
         .background(
             Theme.appBackgroundColor

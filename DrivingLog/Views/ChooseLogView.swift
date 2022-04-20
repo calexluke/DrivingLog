@@ -49,20 +49,25 @@ struct ChooseLogView: View {
             // navigate to ProgressView with selected log
             NavigationLink(destination: ProgressView(drivingLog: selectedLog),
                            isActive: $navigateToProgressView, label: {
-                Button("Load Selected Profile") {
+                Button(action: {
                     writeSelectedLogToPDF()
                     navigateToProgressView = true
-                }
-                .modifier(ButtonModifier())
-                .padding([.bottom, .top])
+                }, label: {
+                    Text("Load Selected Profile")
+                        .modifier(ButtonModifier())
+                        .padding()
+                })
             })
             
             //deletes a profile if this button is clicked
-            Button("Delete Selected Profile") {
+            Button(action: {
                 deleteProfileAlertIsPresented.toggle()
-            }
-            .modifier(ButtonModifier())
-            .padding(.bottom)
+            }, label: {
+                Text("Delete Selected Profile")
+                    .modifier(ButtonModifier())
+                    .padding(.bottom)
+            })
+            
             //final alert before deleting profile
             .alert(isPresented: $deleteProfileAlertIsPresented) {
                 deleteProfileAlert()

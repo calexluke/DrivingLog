@@ -56,12 +56,15 @@ struct HomeView: View {
                         destination: ProgressView(drivingLog: newLog),
                         isActive: $navigateToProgressView,
                         label: {
-                            Button("Start New Profile") {
+                            Button(action: {
                                 onNewProfileTapped()
-                            }
-                            .modifier(ButtonModifier())
+                            }, label: {
+                                Text("Start New Profile")
+                                    .modifier(ButtonModifier())
+                                    .padding(.bottom)
+                            })
                         })
-                        .padding(.bottom)
+                        
                 }
                 
                 //More UI design, using the colors initialized earlier
@@ -96,8 +99,9 @@ struct HomeView: View {
                 label: {
                     Text("Open A Saved Profile")
                         .modifier(ButtonModifier())
+                        .padding(.bottom)
                 })
-                .padding(.bottom)
+                
         }
     }
     

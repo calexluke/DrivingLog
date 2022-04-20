@@ -40,17 +40,32 @@ struct EditTripView: View {
             .padding([.leading, .trailing, .bottom])
             
             //Button to save changes
-            Button("Save Changes") {
-                drivingLog.editTrip(tripWithChanges: trip)
-                logsManager.updateAndSaveLogsList(with: drivingLog)
-                DispatchQueue.global(qos: .default).async {
-                    pdfManager.writeTripDataToPDF(for: drivingLog.trips, id: drivingLog.id)
-                    cloudManager.saveTrip(trip)
-                }
-            }
-            .modifier(ButtonModifier())
-            .padding(.bottom)
+            Button(action: {
+                saveChanges()
+            }, label: {
+                Text("Save Changes")
+                    .modifier(ButtonModifier())
+                    .padding(.bottom)
+            })
         }
+    }
+    
+    func saveChanges() {
+        guard let savedTrip = drivingLog.getTrip(id: trip.id) else {
+            print("error finding matching trip in driving log")
+            return
+        }
+
+        // only save changes if something has changed!
+        if savedTrip.startTime != trip.startTime || savedTrip.endTime != trip.endTime {
+            drivingLog.editTrip(tripWithChanges: trip)
+            logsManager.updateAndSaveLogsList(with: drivingLog)
+            DispatchQueue.global(qos: .default).async {
+                pdfManager.writeTripDataToPDF(for: drivingLog.trips, id: drivingLog.id)
+                cloudManager.saveTrip(trip)
+            }
+        }
+        
     }
 }
 

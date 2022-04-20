@@ -42,11 +42,13 @@ struct ProgressView: View {
                     })
                     .padding()
                 
-                Button("Start New Trip") {
+                Button(action: {
                     newTripSheetIsPresented.toggle()
-                }
-                .modifier(ButtonModifier())
-                .padding(.bottom)
+                }, label: {
+                    Text("Start New Trip")
+                        .modifier(ButtonModifier())
+                        .padding(.bottom)
+                })
             }
             .alert(isPresented: $cloudViewModel.cloudSaveError) {
                 cloudSaveErrorAlert()
