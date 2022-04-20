@@ -63,19 +63,24 @@ struct TripInProgressView: View {
             }
             .padding()
 
-            Button("End Trip") {
+            Button(action: {
                 endTrip()
-            }
-            .modifier(ButtonModifier())
+            }, label: {
+                Text("End Trip")
+                    .modifier(ButtonModifier())
+                    .padding(.bottom)
+            })
             //presents an alert to the supervisor that the trip was completed
             .alert(isPresented: $supervistorAlertIsPresented) {
                 supervisorAlert()
             }
 
-            Button("Cancel Trip") {
+            Button(action: {
                 cancelTrip()
-            }
-            .modifier(ButtonModifier())
+            }, label: {
+                Text("Cancel Trip")
+                    .modifier(ButtonModifier())
+            })
             //pops up an alert asking if the user really wants to quit the trip
             .alert(isPresented: $cancelAlertIsPresented) {
                 cancelAlert()

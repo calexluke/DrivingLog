@@ -88,14 +88,24 @@ final class MapViewModel: NSObject, ObservableObject, CLLocationManagerDelegate 
     }
     
     /*A function that updates the location of the user and adds
-    it to the array of coordinates.*/
+     it to the array of coordinates.*/
     func updateLocation() {
         centerMapOnUser()
         guard let locationManager = locationManager else {
             return
         }
         if let locationUpdate = locationManager.location {
-            locations.append(locationUpdate)
+            if locations.isEmpty {
+                locations.append(locationUpdate)
+            } else {
+                // only add new location if the new location is a certain distance from previous
+                if let previousLocation = locations.last {
+                    let distanceFromPrevious = locationUpdate.distance(from: previousLocation)
+                    if distanceFromPrevious > 5 {
+                        locations.append(locationUpdate)
+                    }
+                }
+            }
         }
     }
     

@@ -75,6 +75,13 @@ class DrivingLog: ObservableObject, Identifiable, Codable, Hashable {
         }
     }
     
+    func getTrip(id: UUID) -> Trip? {
+        let matchingTrips = trips.filter {
+            $0.id == id
+        }
+        return matchingTrips.first
+    }
+    
     func setName(_ newName: String) {
         name = newName
     }

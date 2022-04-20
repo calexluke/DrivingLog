@@ -12,9 +12,9 @@ struct TripDetailView: View {
     //Initializing all of the variables and constants necessary for the Trip Detail View
     @ObservedObject var drivingLog: DrivingLog
     @StateObject var mapViewModel = MapViewModel()
+    @ObservedObject var cloudViewModel = CloudViewModel.sharedInstance
     @State var trip: Trip
-    @State var fetchTripError = false
-    @State var tripErrorMessage = ""
+
     let logsManager = DrivingLogsManager.sharedInstance
     let cloudManager = CloudManager()
     
@@ -57,8 +57,10 @@ struct TripDetailView: View {
     
     func onTripFetched(fetchedTrip: Trip?, error: Error?) {
         guard error == nil else {
-            tripErrorMessage = error!.localizedDescription
-            fetchTripError = true
+            DispatchQueue.main.async {
+                cloudViewModel.tripErrorMessage = error!.localizedDescription
+                cloudViewModel.fetchTripError = true
+            }
             print(error!.localizedDescription)
             return
         }
@@ -66,12 +68,13 @@ struct TripDetailView: View {
         guard let fetchedTrip = fetchedTrip else {
             return
         }
-        
-        trip = fetchedTrip
-        mapViewModel.locations = fetchedTrip.locations
-        mapViewModel.centerMapOnStartingLocation()
-        print("finished fetching trip. start time: \(fetchedTrip.startTime), supervisor: \(fetchedTrip.supervisorName)")
-        print(fetchedTrip.locations)
+        DispatchQueue.main.async {
+            trip = fetchedTrip
+            mapViewModel.locations = fetchedTrip.locations
+            mapViewModel.centerMapOnStartingLocation()
+            print("finished fetching trip. start time: \(fetchedTrip.startTime), supervisor: \(fetchedTrip.supervisorName)")
+            print(fetchedTrip.locations)
+        }
     }
     
     @ViewBuilder
@@ -86,7 +89,7 @@ struct TripDetailView: View {
             LineMapView(mapViewModel: mapViewModel)
               .ignoresSafeArea(edges: .top)
               .frame(height: 300)
-              .alert(isPresented: $fetchTripError) {
+              .alert(isPresented: $cloudViewModel.fetchTripError) {
                   fetchTripErrorAlert()
               }
         }
@@ -95,7 +98,7 @@ struct TripDetailView: View {
     func fetchTripErrorAlert() -> Alert {
         return Alert(
             title: Text("Error fetching trip location data from iCloud"),
-            message: Text(tripErrorMessage),
+            message: Text(cloudViewModel.tripErrorMessage),
             dismissButton: .default(Text("OK"))
         )
     }

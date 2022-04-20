@@ -11,8 +11,11 @@ struct HomeView: View {
     
     //Initializing the variables needed for the Home View
     @State var profileName = ""
+    @State var newLog = DrivingLog(name: "default")
     @State var navigateToProgressView = false
     @State var showNewProfileSheet = false
+    @State var userHasCreatedProfiles = false
+    let logsManager = DrivingLogsManager.sharedInstance
     
     //Initializing UI design colors
     init() {
@@ -46,26 +49,22 @@ struct HomeView: View {
                     
                     Spacer()
                     
-                    // navigate to choose profile screen
-                    NavigationLink(
-                        destination: ChooseLogView(),
-                        label: {
-                            Text("Open A Saved Profile")
-                                .modifier(ButtonModifier())
-                        })
-                        .padding(.bottom)
+                    chooseProfileButton()
                     
                     // navigate to ProgressView with new DrivingLog object
                     NavigationLink(
-                        destination: ProgressView(drivingLog: DrivingLog(name: profileName)),
+                        destination: ProgressView(drivingLog: newLog),
                         isActive: $navigateToProgressView,
                         label: {
-                            Button("Start New Profile") {
+                            Button(action: {
                                 onNewProfileTapped()
-                            }
-                            .modifier(ButtonModifier())
+                            }, label: {
+                                Text("Start New Profile")
+                                    .modifier(ButtonModifier())
+                                    .padding(.bottom)
+                            })
                         })
-                        .padding(.bottom)
+                        
                 }
                 
                 //More UI design, using the colors initialized earlier
@@ -77,6 +76,7 @@ struct HomeView: View {
                 .onAppear {
                     profileName = ""
                     CloudManager().printUserRecord()
+                    userHasCreatedProfiles = logsManager.listOfLogs.count > 0
                 }
                 .background(
                     Theme.appBackgroundColor
@@ -88,11 +88,30 @@ struct HomeView: View {
         
     }
     
+    @ViewBuilder
+    func chooseProfileButton() -> some View {
+        if !userHasCreatedProfiles {
+            EmptyView()
+        } else {
+            // navigate to choose profile screen
+            NavigationLink(
+                destination: ChooseLogView(),
+                label: {
+                    Text("Open A Saved Profile")
+                        .modifier(ButtonModifier())
+                        .padding(.bottom)
+                })
+                
+        }
+    }
+    
     /// This function allows for the user to navigate to the progress view IF there is a profile name.
     func onProfileNameSaved() {
         guard profileName != "" else {
             return
         }
+        newLog = DrivingLog(name: profileName)
+        logsManager.updateAndSaveLogsList(with: newLog)
         navigateToProgressView.toggle()
     }
     

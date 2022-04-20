@@ -18,7 +18,7 @@ struct ButtonModifier: ViewModifier {
             .foregroundColor(Theme.buttonTextColor)
             .background(Theme.accentColor)
             .clipShape(Capsule())
-            
+            .contentShape(Capsule())
     }
 }
 

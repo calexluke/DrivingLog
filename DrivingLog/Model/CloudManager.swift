@@ -34,7 +34,7 @@ extension CKRecord {
 }
 
 class CloudManager {
-    
+    var cloudViewModel = CloudViewModel.sharedInstance
     let container = CKContainer(identifier: StringConstants.CloudContainerID)
     let tripRecord = "tripRecord"
     let logRecord = "logRecord"
@@ -151,6 +151,10 @@ class CloudManager {
                         }
                         print("data records: ")
                         print(tripRecords)
+                        if tripRecords.isEmpty {
+                            self.cloudViewModel.tripErrorMessage = "Unable to find location data for this trip in iCloud"
+                            self.cloudViewModel.fetchTripError = true
+                        }
                     case.failure(let error):
                         print("error during records query: \(error.localizedDescription)")
                         completionHandler(nil, error)
@@ -166,6 +170,10 @@ class CloudManager {
                 }
                 print("finished fetching trip records: ")
                 print(tripRecords)
+                if tripRecords.isEmpty {
+                    self.cloudViewModel.tripErrorMessage = "Unable to find location data for this trip in iCloud"
+                    self.cloudViewModel.fetchTripError = true
+                }
             }
         }
         container.privateCloudDatabase.add(queryOperation)
@@ -195,7 +203,20 @@ class CloudManager {
     private func saveRecord(_ record: CKRecord) {
         container.privateCloudDatabase.save(record) { _, error in
             guard error == nil else {
-                // top-notch error handling
+                if let ckError = error as? CKError {
+                    switch ckError.code {
+                        case .quotaExceeded:
+                            self.cloudViewModel.cloudSaveErrorMessage = "Your iCloud storage is full. In order to save trip location data, please manage your iCloud settings."
+                            // handle other error codes here as needed
+                        default:
+                            self.cloudViewModel.cloudSaveErrorMessage = error!.localizedDescription
+                    }
+                } else {
+                    self.cloudViewModel.cloudSaveErrorMessage = error!.localizedDescription
+                }
+                DispatchQueue.main.async {
+                    self.cloudViewModel.cloudSaveError = true
+                }
                 print("error saving record: \(error!.localizedDescription)")
                 return
             }

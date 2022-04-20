@@ -32,9 +32,13 @@ struct AddProfileView: View {
             Spacer()
             
             //clicking this button saves the profile temporarily
-            Button("Continue") {
+            Button(action: {
                 saveProfileName()
-            }
+            }, label: {
+                Text("Continue")
+                    .modifier(ButtonModifier())
+                    .padding(.bottom)
+            })
             //gives an alert to the user if there is an error
             .alert(isPresented: $profileNameError) {
                 Alert(
@@ -43,15 +47,16 @@ struct AddProfileView: View {
                     dismissButton: .default(Text("OK"))
                     )
             }
-            .modifier(ButtonModifier())
-            .padding(.bottom)
             
-            //button that cancels profile creation
-            Button("Cancel") {
+            
+            Button(action: {
+                newProfileName = ""
                 presentationMode.wrappedValue.dismiss()
-            }
-            .modifier(ButtonModifier())
-            .padding(.bottom)
+            }, label: {
+                Text("Cancel")
+                    .modifier(ButtonModifier())
+                    .padding(.bottom)
+            })
         }
         .background(
             Theme.appBackgroundColor
