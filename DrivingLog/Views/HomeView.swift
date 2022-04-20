@@ -14,7 +14,8 @@ struct HomeView: View {
     @State var newLog = DrivingLog(name: "default")
     @State var navigateToProgressView = false
     @State var showNewProfileSheet = false
-    @ObservedObject var logsManager = DrivingLogsManager.sharedInstance
+    @State var userHasCreatedProfiles = false
+    let logsManager = DrivingLogsManager.sharedInstance
     
     //Initializing UI design colors
     init() {
@@ -49,14 +50,6 @@ struct HomeView: View {
                     Spacer()
                     
                     chooseProfileButton()
-//                    // navigate to choose profile screen
-//                    NavigationLink(
-//                        destination: ChooseLogView(),
-//                        label: {
-//                            Text("Open A Saved Profile")
-//                                .modifier(ButtonModifier())
-//                        })
-//                        .padding(.bottom)
                     
                     // navigate to ProgressView with new DrivingLog object
                     NavigationLink(
@@ -80,6 +73,7 @@ struct HomeView: View {
                 .onAppear {
                     profileName = ""
                     CloudManager().printUserRecord()
+                    userHasCreatedProfiles = logsManager.listOfLogs.count > 0
                 }
                 .background(
                     Theme.appBackgroundColor
@@ -93,7 +87,7 @@ struct HomeView: View {
     
     @ViewBuilder
     func chooseProfileButton() -> some View {
-        if logsManager.listOfLogs.isEmpty {
+        if !userHasCreatedProfiles {
             EmptyView()
         } else {
             // navigate to choose profile screen

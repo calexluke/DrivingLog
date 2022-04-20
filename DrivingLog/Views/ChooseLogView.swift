@@ -9,10 +9,13 @@ import SwiftUI
 
 struct ChooseLogView: View {
     
-    @ObservedObject var logsManager = DrivingLogsManager.sharedInstance
+    @Environment(\.presentationMode) var presentationMode
+    
+    let logsManager = DrivingLogsManager.sharedInstance
     @State var selectedLog = DrivingLog(name: "default")
     @State var deleteProfileAlertIsPresented = false
     @State var navigateToProgressView = false
+    @State var logsList = [DrivingLog]()
     
     //sets the current log to the one that was selected
     init(selectedLog: DrivingLog) {
@@ -30,7 +33,7 @@ struct ChooseLogView: View {
             //creates a form which all the saved profiles are listed under
             Form {
                 Picker("Select a profile", selection: $selectedLog) {
-                    ForEach(logsManager.listOfLogs, id: \.self) { log in
+                    ForEach(logsList, id: \.self) { log in
                         Text(log.name)
                             .foregroundColor(Theme.primaryTextColor)
                     }
@@ -73,8 +76,12 @@ struct ChooseLogView: View {
         //text on top of screen
         .navigationTitle("Select a saved profile")
         .onAppear {
+            if logsList.isEmpty {
+                logsList = logsManager.listOfLogs
+            }
+            
             if selectedLog.name == "default" {
-                if let lastLog = logsManager.listOfLogs.last {
+                if let lastLog = logsList.last {
                     selectedLog = lastLog
                 }
             }
@@ -98,8 +105,12 @@ struct ChooseLogView: View {
     remaining saved profiles.*/
     func deleteSelectedProfile() {
         logsManager.deleteLog(id: selectedLog.id)
-        if let lastLog = logsManager.listOfLogs.last {
+        logsList = logsManager.listOfLogs
+        if let lastLog = logsList.last {
             selectedLog = lastLog
+        } else {
+            // go back to home view if no logs are left in list
+            presentationMode.wrappedValue.dismiss()
         }
     }
     
